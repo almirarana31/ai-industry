@@ -1,0 +1,450 @@
+// AI Literacy Training Platform - Database Schema
+// Enterprise SaaS Multi-Tenant Architecture
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ==========================================
+// ORGANIZATION & USER MANAGEMENT
+// ==========================================
+
+model Organization {
+  id                String              @id @default(uuid())
+  name              String
+  slug              String              @unique
+  domain            String?
+  logo              String?
+  settings          Json                @default("{}")
+  subscriptionTier  SubscriptionTier    @default(STANDARD)
+  subscriptionEndsAt DateTime?
+  isActive          Boolean             @default(true)
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  deletedAt         DateTime?
+
+  users             User[]
+  trainingModules   TrainingModule[]
+  analyticsSnapshots AnalyticsSnapshot[]
+  auditLogs         AuditLog[]
+  riskIncidents     RiskIncident[]
+
+  @@index([slug])
+  @@index([isActive])
+}
+
+enum SubscriptionTier {
+  FREE
+  STANDARD
+  ENTERPRISE
+  UNLIMITED
+}
+
+model User {
+  id                String            @id @default(uuid())
+  email             String            @unique
+  passwordHash      String
+  firstName         String
+  lastName          String
+  avatar            String?
+  role              UserRole          @default(EMPLOYEE)
+  department        String?
+  jobTitle          String?
+  isActive          Boolean           @default(true)
+  emailVerified     Boolean           @default(false)
+  lastLoginAt       DateTime?
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+  deletedAt         DateTime?
+
+  organizationId    String
+  organization      Organization      @relation(fields: [organizationId], references: [id])
+
+  progress          UserProgress[]
+  sessionAttempts   SessionAttempt[]
+  npcInteractions   NPCInteraction[]
+  complianceScores  ComplianceScore[]
+  refreshTokens     RefreshToken[]
+  auditLogs         AuditLog[]
+
+  @@index([organizationId])
+  @@index([email])
+  @@index([role])
+}
+
+enum UserRole {
+  EMPLOYEE
+  MANAGER
+  COMPLIANCE_ADMIN
+  SUPER_ADMIN
+}
+
+model RefreshToken {
+  id          String    @id @default(uuid())
+  token       String    @unique
+  expiresAt   DateTime
+  isRevoked   Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  
+  userId      String
+  user        User      @relation(fields: [userId], references: [id])
+
+  @@index([token])
+  @@index([userId])
+}
+
+// ==========================================
+// TRAINING MODULES & SCENARIOS
+// ==========================================
+
+model TrainingModule {
+  id                String            @id @default(uuid())
+  title             String
+  slug              String
+  description       String
+  objectives        String[]
+  category          ModuleCategory
+  difficulty        Difficulty        @default(INTERMEDIATE)
+  estimatedMinutes  Int               @default(30)
+  order             Int               @default(0)
+  isPublished       Boolean           @default(false)
+  thumbnailUrl      String?
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+  deletedAt         DateTime?
+
+  organizationId    String?
+  organization      Organization?     @relation(fields: [organizationId], references: [id])
+
+  scenarios         Scenario[]
+  userProgress      UserProgress[]
+
+  @@unique([slug, organizationId])
+  @@index([category])
+  @@index([isPublished])
+}
+
+enum ModuleCategory {
+  AI_FUNDAMENTALS
+  BIAS_ETHICS
+  GOVERNANCE_ESCALATION
+  IP_CONTENT_LIABILITY
+  DATA_PRIVACY_SECURITY
+}
+
+enum Difficulty {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+  EXPERT
+}
+
+model Scenario {
+  id                String            @id @default(uuid())
+  title             String
+  description       String
+  context           String            @db.Text
+  scenarioType      ScenarioType
+  initialState      Json              @default("{}")
+  decisionTree      Json              @default("{}")
+  riskFactors       Json              @default("[]")
+  complianceRules   Json              @default("[]")
+  order             Int               @default(0)
+  isActive          Boolean           @default(true)
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+  deletedAt         DateTime?
+
+  moduleId          String
+  module            TrainingModule    @relation(fields: [moduleId], references: [id])
+
+  npcInteractions   NPCInteraction[]
+  sessionAttempts   SessionAttempt[]
+
+  @@index([moduleId])
+  @@index([scenarioType])
+}
+
+enum ScenarioType {
+  EMAIL_RESPONSE
+  AI_CHAT
+  DOCUMENT_REVIEW
+  ESCALATION_DECISION
+  POLICY_APPLICATION
+  MULTI_STEP
+}
+
+// ==========================================
+// NPC & AI INTERACTION SYSTEM
+// ==========================================
+
+model NPCInteraction {
+  id                String            @id @default(uuid())
+  npcName           String
+  npcRole           String
+  npcTone           NPCTone           @default(NEUTRAL)
+  userPrompt        String            @db.Text
+  aiResponse        String            @db.Text
+  promptTemplate    String?
+  modelUsed         String            @default("gpt-4")
+  tokensUsed        Int               @default(0)
+  responseTimeMs    Int               @default(0)
+  riskFlags         Json              @default("[]")
+  complianceIssues  Json              @default("[]")
+  createdAt         DateTime          @default(now())
+
+  userId            String
+  user              User              @relation(fields: [userId], references: [id])
+
+  scenarioId        String
+  scenario          Scenario          @relation(fields: [scenarioId], references: [id])
+
+  sessionAttemptId  String?
+  sessionAttempt    SessionAttempt?   @relation(fields: [sessionAttemptId], references: [id])
+
+  @@index([userId])
+  @@index([scenarioId])
+  @@index([createdAt])
+}
+
+enum NPCTone {
+  NEUTRAL
+  FRIENDLY
+  URGENT
+  SKEPTICAL
+  DEMANDING
+  SUPPORTIVE
+}
+
+// ==========================================
+// USER PROGRESS & SESSION TRACKING
+// ==========================================
+
+model UserProgress {
+  id                  String            @id @default(uuid())
+  completionPercent   Float             @default(0)
+  status              ProgressStatus    @default(NOT_STARTED)
+  startedAt           DateTime?
+  completedAt         DateTime?
+  lastAccessedAt      DateTime          @default(now())
+  timeSpentSeconds    Int               @default(0)
+  attemptCount        Int               @default(0)
+  bestScore           Float?
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+
+  userId              String
+  user                User              @relation(fields: [userId], references: [id])
+
+  moduleId            String
+  module              TrainingModule    @relation(fields: [moduleId], references: [id])
+
+  @@unique([userId, moduleId])
+  @@index([userId])
+  @@index([status])
+}
+
+enum ProgressStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  COMPLETED
+  CERTIFIED
+}
+
+model SessionAttempt {
+  id                  String            @id @default(uuid())
+  score               Float             @default(0)
+  maxScore            Float             @default(100)
+  decisions           Json              @default("[]")
+  riskScoreTotal      Float             @default(0)
+  complianceScore     Float             @default(0)
+  ethicalScore        Float             @default(0)
+  promptSuccessRate   Float             @default(0)
+  violations          Json              @default("[]")
+  escalationsMade     Int               @default(0)
+  timeSpentSeconds    Int               @default(0)
+  startedAt           DateTime          @default(now())
+  completedAt         DateTime?
+  createdAt           DateTime          @default(now())
+
+  userId              String
+  user                User              @relation(fields: [userId], references: [id])
+
+  scenarioId          String
+  scenario            Scenario          @relation(fields: [scenarioId], references: [id])
+
+  npcInteractions     NPCInteraction[]
+
+  @@index([userId])
+  @@index([scenarioId])
+  @@index([startedAt])
+}
+
+// ==========================================
+// COMPLIANCE & SCORING
+// ==========================================
+
+model ComplianceScore {
+  id                    String            @id @default(uuid())
+  overallScore          Float             @default(0)
+  riskDetectionScore    Float             @default(0)
+  ethicalJudgmentScore  Float             @default(0)
+  policyAdherenceScore  Float             @default(0)
+  promptSafetyScore     Float             @default(0)
+  escalationScore       Float             @default(0)
+  calculatedAt          DateTime          @default(now())
+  period                ScorePeriod       @default(WEEKLY)
+  metadata              Json              @default("{}")
+  createdAt             DateTime          @default(now())
+
+  userId                String
+  user                  User              @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([period])
+  @@index([calculatedAt])
+}
+
+enum ScorePeriod {
+  DAILY
+  WEEKLY
+  MONTHLY
+  QUARTERLY
+  YEARLY
+}
+
+model RiskIncident {
+  id                String            @id @default(uuid())
+  incidentType      IncidentType
+  severity          Severity          @default(MEDIUM)
+  description       String            @db.Text
+  context           Json              @default("{}")
+  aiPromptUsed      String?           @db.Text
+  violatedPolicies  String[]
+  regulatoryFlags   String[]
+  resolution        String?           @db.Text
+  resolvedAt        DateTime?
+  isResolved        Boolean           @default(false)
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+
+  organizationId    String
+  organization      Organization      @relation(fields: [organizationId], references: [id])
+
+  @@index([organizationId])
+  @@index([incidentType])
+  @@index([severity])
+  @@index([isResolved])
+}
+
+enum IncidentType {
+  IP_VIOLATION
+  PRIVACY_BREACH
+  BIAS_DETECTED
+  HALLUCINATION_RISK
+  POLICY_VIOLATION
+  UNAUTHORIZED_USE
+  DATA_LEAK_RISK
+  ETHICAL_CONCERN
+}
+
+enum Severity {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+// ==========================================
+// AUDIT TRAIL & ANALYTICS
+// ==========================================
+
+model AuditLog {
+  id                String            @id @default(uuid())
+  action            AuditAction
+  resourceType      String
+  resourceId        String?
+  details           Json              @default("{}")
+  ipAddress         String?
+  userAgent         String?
+  metadata          Json              @default("{}")
+  createdAt         DateTime          @default(now())
+
+  userId            String?
+  user              User?             @relation(fields: [userId], references: [id])
+
+  organizationId    String
+  organization      Organization      @relation(fields: [organizationId], references: [id])
+
+  @@index([organizationId])
+  @@index([userId])
+  @@index([action])
+  @@index([resourceType])
+  @@index([createdAt])
+}
+
+enum AuditAction {
+  LOGIN
+  LOGOUT
+  MODULE_STARTED
+  MODULE_COMPLETED
+  SCENARIO_STARTED
+  SCENARIO_COMPLETED
+  DECISION_MADE
+  AI_PROMPT_SUBMITTED
+  VIOLATION_TRIGGERED
+  ESCALATION_MADE
+  REPORT_GENERATED
+  SETTINGS_CHANGED
+  USER_CREATED
+  USER_UPDATED
+  USER_DELETED
+  ROLE_CHANGED
+}
+
+model AnalyticsSnapshot {
+  id                      String            @id @default(uuid())
+  snapshotDate            DateTime          @default(now())
+  period                  ScorePeriod       @default(DAILY)
+  
+  // Organization metrics
+  totalUsers              Int               @default(0)
+  activeUsers             Int               @default(0)
+  completedModules        Int               @default(0)
+  
+  // Compliance metrics
+  avgComplianceScore      Float             @default(0)
+  complianceReadiness     Float             @default(0)
+  
+  // Risk metrics
+  avgRiskScore            Float             @default(0)
+  totalViolations         Int               @default(0)
+  criticalIncidents       Int               @default(0)
+  
+  // Performance metrics
+  avgPromptSuccessRate    Float             @default(0)
+  avgEthicalScore         Float             @default(0)
+  avgKnowledgeRetention   Float             @default(0)
+  
+  // Department breakdown
+  departmentStats         Json              @default("{}")
+  
+  // Trend data
+  riskTrend               Json              @default("[]")
+  complianceTrend         Json              @default("[]")
+  
+  metadata                Json              @default("{}")
+  createdAt               DateTime          @default(now())
+
+  organizationId          String
+  organization            Organization      @relation(fields: [organizationId], references: [id])
+
+  @@index([organizationId])
+  @@index([snapshotDate])
+  @@index([period])
+}
