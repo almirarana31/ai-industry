@@ -8,6 +8,10 @@ import type {
   DashboardAnalytics,
   OrganizationAnalytics,
 } from '@/types';
+import { mockUser, mockModules, mockScenarios, mockAnalytics, mockProgress, mockDelay, mockNPCResponses } from './mock-data';
+
+// DEMO MODE - set to true to use mock data instead of real API
+const DEMO_MODE = true;
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || '/api';
 
@@ -134,6 +138,18 @@ async function refreshAccessToken(): Promise<boolean> {
 // Auth API
 export const authAPI = {
   async login(email: string, password: string): Promise<ApiResponse<LoginResponse>> {
+    if (DEMO_MODE) {
+      await mockDelay(500);
+      return {
+        success: true,
+        data: {
+          user: mockUser,
+          accessToken: 'demo-access-token',
+          refreshToken: 'demo-refresh-token',
+        },
+      };
+    }
+
     const response = await apiFetch<LoginResponse>('/auth/login', {
       method: 'POST',
       body: JSON.stringify({ email, password }),
@@ -153,6 +169,18 @@ export const authAPI = {
     lastName: string;
     organizationName: string;
   }): Promise<ApiResponse<LoginResponse>> {
+    if (DEMO_MODE) {
+      await mockDelay(500);
+      return {
+        success: true,
+        data: {
+          user: { ...mockUser, ...data },
+          accessToken: 'demo-access-token',
+          refreshToken: 'demo-refresh-token',
+        },
+      };
+    }
+
     const response = await apiFetch<LoginResponse>('/auth/register', {
       method: 'POST',
       body: JSON.stringify(data),
@@ -166,12 +194,22 @@ export const authAPI = {
   },
 
   async logout(): Promise<ApiResponse<void>> {
+    if (DEMO_MODE) {
+      await mockDelay(200);
+      accessToken = null;
+      return { success: true };
+    }
+
     const result = await apiFetch<void>('/auth/logout', { method: 'POST' });
     accessToken = null;
     return result;
   },
 
   async me(): Promise<ApiResponse<User>> {
+    if (DEMO_MODE) {
+      await mockDelay(200);
+      return { success: true, data: mockUser };
+    }
     return apiFetch<User>('/auth/me');
   },
 };
@@ -179,18 +217,60 @@ export const authAPI = {
 // Training API
 export const trainingAPI = {
   async getModules(): Promise<ApiResponse<TrainingModule[]>> {
+    if (DEMO_MODE) {
+      await mockDelay(300);
+      return { success: true, data: mockModules };
+    }
     return apiFetch<TrainingModule[]>('/training/modules');
   },
 
-  async getModule(id: string): Promise<ApiResponse<TrainingModule>> {
-    return apiFetch<TrainingModule>(`/training/modules/${id}`);
+  async getModule(id: string): Promise<ApiResponse<TrainingModule & { scenarios: Scenario[] }>> {
+    if (DEMO_MODE) {
+      await mockDelay(300);
+      const module = mockModules.find(m => m.id === id);
+      if (module) {
+        return {
+          success: true,
+          data: {
+            ...module,
+            scenarios: mockScenarios[id] || [],
+          },
+        };
+      }
+      return { success: false, error: 'Module not found' };
+    }
+    return apiFetch<TrainingModule & { scenarios: Scenario[] }>(`/training/modules/${id}`);
   },
 
   async getScenario(id: string): Promise<ApiResponse<Scenario>> {
+    if (DEMO_MODE) {
+      await mockDelay(300);
+      for (const moduleId of Object.keys(mockScenarios)) {
+        const scenario = mockScenarios[moduleId].find(s => s.id === id);
+        if (scenario) {
+          return { success: true, data: scenario };
+        }
+      }
+      return { success: false, error: 'Scenario not found' };
+    }
     return apiFetch<Scenario>(`/training/scenarios/${id}`);
   },
 
   async startSession(scenarioId: string): Promise<ApiResponse<SessionAttempt>> {
+    if (DEMO_MODE) {
+      await mockDelay(400);
+      return {
+        success: true,
+        data: {
+          id: `session-${Date.now()}`,
+          scenarioId,
+          userId: mockUser.id,
+          status: 'IN_PROGRESS',
+          startedAt: new Date().toISOString(),
+          interactions: [],
+        } as SessionAttempt,
+      };
+    }
     return apiFetch<SessionAttempt>('/training/sessions/start', {
       method: 'POST',
       body: JSON.stringify({ scenarioId }),
@@ -207,6 +287,23 @@ export const trainingAPI = {
     riskScore: number;
     isCorrect: boolean;
   }>> {
+    if (DEMO_MODE) {
+      await mockDelay(600);
+      const isCorrect = decision.toLowerCase().includes('escalate') || 
+                       decision.toLowerCase().includes('refuse') ||
+                       decision.toLowerCase().includes('report');
+      return {
+        success: true,
+        data: {
+          feedback: isCorrect 
+            ? 'Excellent decision! You correctly identified the compliance risk and took appropriate action.'
+            : 'This decision could lead to compliance issues. Consider the regulatory implications more carefully.',
+          complianceImpact: isCorrect ? 15 : -10,
+          riskScore: isCorrect ? 10 : 65,
+          isCorrect,
+        },
+      };
+    }
     return apiFetch(`/training/sessions/${sessionId}/decision`, {
       method: 'POST',
       body: JSON.stringify({ decision, reasoning }),
@@ -221,6 +318,19 @@ export const trainingAPI = {
       aiUsageScore: number;
     }
   ): Promise<ApiResponse<SessionAttempt>> {
+    if (DEMO_MODE) {
+      await mockDelay(500);
+      return {
+        success: true,
+        data: {
+          id: sessionId,
+          status: 'COMPLETED',
+          completedAt: new Date().toISOString(),
+          finalScore: Math.round((scores.complianceScore + scores.riskAwarnessScore + scores.aiUsageScore) / 3),
+          ...scores,
+        } as SessionAttempt,
+      };
+    }
     return apiFetch<SessionAttempt>(`/training/sessions/${sessionId}/complete`, {
       method: 'POST',
       body: JSON.stringify(scores),
@@ -228,6 +338,10 @@ export const trainingAPI = {
   },
 
   async getProgress(): Promise<ApiResponse<UserProgress[]>> {
+    if (DEMO_MODE) {
+      await mockDelay(300);
+      return { success: true, data: mockProgress };
+    }
     return apiFetch<UserProgress[]>('/training/progress');
   },
 
@@ -237,6 +351,25 @@ export const trainingAPI = {
     userMessage: string;
     conversationHistory?: Array<{ role: string; content: string }>;
   }): Promise<ApiResponse<NPCMessage>> {
+    if (DEMO_MODE) {
+      await mockDelay(800 + Math.random() * 400); // Simulate typing delay
+      const responses = mockNPCResponses[data.npcName] || mockNPCResponses['marketing_colleague'];
+      const historyLength = data.conversationHistory?.length || 0;
+      const responseIndex = Math.min(historyLength, responses.length - 1);
+      
+      return {
+        success: true,
+        data: {
+          id: `msg-${Date.now()}`,
+          role: 'assistant',
+          content: responses[responseIndex],
+          npcName: data.npcName,
+          timestamp: new Date().toISOString(),
+          sentiment: 'neutral',
+          riskIndicators: [],
+        } as NPCMessage,
+      };
+    }
     return apiFetch<NPCMessage>('/training/npc/respond', {
       method: 'POST',
       body: JSON.stringify(data),
@@ -262,10 +395,34 @@ export const trainingAPI = {
 // Analytics API
 export const analyticsAPI = {
   async getDashboard(): Promise<ApiResponse<DashboardAnalytics>> {
+    if (DEMO_MODE) {
+      await mockDelay(400);
+      return { success: true, data: mockAnalytics };
+    }
     return apiFetch<DashboardAnalytics>('/analytics/dashboard');
   },
 
   async getOrganizationStats(): Promise<ApiResponse<OrganizationAnalytics>> {
+    if (DEMO_MODE) {
+      await mockDelay(400);
+      return {
+        success: true,
+        data: {
+          totalUsers: 156,
+          activeUsers: 142,
+          averageComplianceScore: 78,
+          completionRate: 65,
+          modulesCompleted: 312,
+          averageTimePerModule: 35,
+          riskIncidents: 12,
+          topPerformers: [
+            { userId: 'user-001', name: 'John Doe', score: 95 },
+            { userId: 'user-002', name: 'Jane Smith', score: 92 },
+            { userId: 'user-003', name: 'Bob Wilson', score: 89 },
+          ],
+        } as OrganizationAnalytics,
+      };
+    }
     return apiFetch<OrganizationAnalytics>('/analytics/organization');
   },
 

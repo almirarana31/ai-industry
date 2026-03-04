@@ -1,0 +1,228 @@
+import type { User, TrainingModule, Scenario, DashboardAnalytics, UserProgress, RecentActivity, RiskBreakdown } from '@/types';
+
+export const mockUser: User = {
+  id: 'user-001',
+  email: 'john.doe@globaltech.example',
+  firstName: 'John',
+  lastName: 'Doe',
+  role: 'EMPLOYEE',
+  department: 'Engineering',
+  organizationId: 'org-001',
+};
+
+export const mockModules: TrainingModule[] = [
+  {
+    id: 'module-001',
+    title: 'AI Ethics Fundamentals',
+    slug: 'ai-ethics-fundamentals',
+    description: 'Learn the core principles of ethical AI use in the workplace, including fairness, transparency, and accountability.',
+    category: 'BIAS_ETHICS',
+    difficulty: 'BEGINNER',
+    estimatedMinutes: 30,
+    objectives: ['Understand ethical AI principles', 'Identify bias in AI systems', 'Apply ethical decision-making'],
+    scenarios: [],
+    isPublished: true,
+    thumbnailUrl: '/images/ethics.png',
+  },
+  {
+    id: 'module-002',
+    title: 'Data Privacy & AI',
+    slug: 'data-privacy-ai',
+    description: 'Understanding how to protect sensitive data when using AI tools and systems.',
+    category: 'DATA_PRIVACY_SECURITY',
+    difficulty: 'INTERMEDIATE',
+    estimatedMinutes: 45,
+    objectives: ['Identify PII risks', 'Apply data minimization', 'Understand GDPR implications'],
+    scenarios: [],
+    isPublished: true,
+  },
+  {
+    id: 'module-003',
+    title: 'EU AI Act Compliance',
+    slug: 'eu-ai-act-compliance',
+    description: 'Navigate the regulatory landscape of AI in Europe with practical compliance scenarios.',
+    category: 'GOVERNANCE_ESCALATION',
+    difficulty: 'ADVANCED',
+    estimatedMinutes: 60,
+    objectives: ['Understand EU AI Act requirements', 'Classify AI risk levels', 'Implement compliance measures'],
+    scenarios: [],
+    isPublished: true,
+  },
+  {
+    id: 'module-004',
+    title: 'AI Bias Recognition',
+    slug: 'ai-bias-recognition',
+    description: 'Learn to identify and mitigate bias in AI systems and outputs.',
+    category: 'BIAS_ETHICS',
+    difficulty: 'INTERMEDIATE',
+    estimatedMinutes: 40,
+    objectives: ['Recognize algorithmic bias', 'Evaluate AI fairness', 'Report bias concerns'],
+    scenarios: [],
+    isPublished: true,
+  },
+  {
+    id: 'module-005',
+    title: 'Secure AI Deployment',
+    slug: 'secure-ai-deployment',
+    description: 'Best practices for deploying AI systems securely in enterprise environments.',
+    category: 'DATA_PRIVACY_SECURITY',
+    difficulty: 'ADVANCED',
+    estimatedMinutes: 55,
+    objectives: ['Apply security best practices', 'Assess deployment risks', 'Monitor AI systems'],
+    scenarios: [],
+    isPublished: true,
+  },
+];
+
+export const mockScenarios: Record<string, Scenario[]> = {
+  'module-001': [
+    {
+      id: 'scenario-001',
+      title: 'The Urgent Email Request',
+      description: 'A colleague asks you to use AI to analyze customer data for a marketing campaign.',
+      context: 'You receive an urgent email from the marketing department asking you to use the company AI assistant to analyze customer purchase history and generate targeted email content.',
+      scenarioType: 'EMAIL_RESPONSE',
+    },
+    {
+      id: 'scenario-002',
+      title: 'AI-Generated Reports',
+      description: 'Your manager wants you to present AI-generated analysis as your own work.',
+      context: 'Your manager asks you to use AI to generate a quarterly report and present it to stakeholders without disclosing AI involvement.',
+      scenarioType: 'DOCUMENT_REVIEW',
+    },
+    {
+      id: 'scenario-003',
+      title: 'Chatbot Customer Service',
+      description: 'A customer complains about unfair treatment from the AI chatbot.',
+      context: 'A frustrated customer contacts you claiming the AI chatbot denied their service request unfairly. They demand human review.',
+      scenarioType: 'AI_CHAT',
+    },
+  ],
+  'module-002': [
+    {
+      id: 'scenario-004',
+      title: 'Personal Data in Prompts',
+      description: 'A team member shares customer PII in an AI prompt.',
+      context: 'You notice a colleague copying customer personal information into an external AI tool to draft response emails.',
+      scenarioType: 'ESCALATION_DECISION',
+    },
+  ],
+  'module-003': [
+    {
+      id: 'scenario-005',
+      title: 'High-Risk AI Classification',
+      description: 'Determine if a new AI system falls under EU AI Act high-risk category.',
+      context: 'Your company is deploying an AI system for employee performance evaluation. You need to assess its regulatory classification.',
+      scenarioType: 'POLICY_APPLICATION',
+    },
+  ],
+};
+
+export const mockAnalytics: DashboardAnalytics = {
+  overallProgress: 42,
+  complianceScore: 78,
+  modulesCompleted: 1,
+  totalModules: 5,
+  scenariosCompleted: 10,
+  totalScenarios: 24,
+  averageScore: 82,
+  timeSpent: 245,
+  streakDays: 5,
+  recentActivity: [
+    {
+      id: 'activity-001',
+      type: 'scenario_completed',
+      title: 'Completed "The Urgent Email Request"',
+      timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
+      score: 85,
+    },
+    {
+      id: 'activity-002',
+      type: 'module_started',
+      title: 'Started "Data Privacy & AI"',
+      timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(),
+    },
+    {
+      id: 'activity-003',
+      type: 'badge_earned',
+      title: 'Earned "Quick Learner" badge',
+      timestamp: new Date(Date.now() - 48 * 60 * 60 * 1000).toISOString(),
+    },
+  ] as RecentActivity[],
+  riskBreakdown: {
+    UNACCEPTABLE: 2,
+    HIGH: 5,
+    LIMITED: 8,
+    MINIMAL: 9,
+  } as RiskBreakdown,
+};
+
+export const mockProgress: UserProgress[] = [
+  {
+    id: 'progress-001',
+    moduleId: 'module-001',
+    module: {
+      id: 'module-001',
+      title: 'AI Ethics Fundamentals',
+      category: 'BIAS_ETHICS',
+      estimatedMinutes: 30,
+    },
+    completionPercent: 60,
+    status: 'IN_PROGRESS',
+    startedAt: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
+    bestScore: 82,
+  },
+  {
+    id: 'progress-002',
+    moduleId: 'module-002',
+    module: {
+      id: 'module-002',
+      title: 'Data Privacy & AI',
+      category: 'DATA_PRIVACY_SECURITY',
+      estimatedMinutes: 45,
+    },
+    completionPercent: 50,
+    status: 'IN_PROGRESS',
+    startedAt: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(),
+    bestScore: 78,
+  },
+  {
+    id: 'progress-003',
+    moduleId: 'module-004',
+    module: {
+      id: 'module-004',
+      title: 'AI Bias Recognition',
+      category: 'BIAS_ETHICS',
+      estimatedMinutes: 40,
+    },
+    completionPercent: 100,
+    status: 'COMPLETED',
+    startedAt: new Date(Date.now() - 14 * 24 * 60 * 60 * 1000).toISOString(),
+    completedAt: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toISOString(),
+    bestScore: 91,
+  },
+];
+
+// Mock NPC responses for simulation
+export const mockNPCResponses: Record<string, string[]> = {
+  marketing_colleague: [
+    "Hey! I really need this analysis done ASAP. The VP is breathing down my neck about the campaign metrics.",
+    "Can't you just run it through the AI? It'll take like 5 minutes. Nobody will know.",
+    "Look, I understand your concerns, but we've done this before. It's fine, trust me.",
+    "Okay, okay. If you're that worried about it, what do you suggest we do instead?",
+  ],
+  manager: [
+    "I need that report by end of day. Use whatever tools you need to get it done.",
+    "The stakeholders don't need to know how we generated the insights. Just present it professionally.",
+    "I appreciate your diligence, but sometimes we need to be practical. What's your recommendation?",
+  ],
+  customer: [
+    "This is ridiculous! Your AI bot rejected my application without any explanation.",
+    "I've been a loyal customer for 5 years and this is how I'm treated?",
+    "I want to speak to a human who can actually help me, not be shuffled around.",
+    "Thank you for taking the time to look into this. I appreciate you understanding my frustration.",
+  ],
+};
+
+// Simulated delay for mock API calls
+export const mockDelay = (ms: number = 500) => new Promise(resolve => setTimeout(resolve, ms));

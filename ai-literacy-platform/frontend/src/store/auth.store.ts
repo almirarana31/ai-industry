@@ -1,6 +1,10 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { User, AuthState } from '@/types';
+import { mockUser } from '@/lib/mock-data';
+
+// DEMO MODE - set to true to bypass backend
+const DEMO_MODE = true;
 
 interface AuthStore extends AuthState {
   setUser: (user: User | null) => void;
@@ -9,6 +13,7 @@ interface AuthStore extends AuthState {
   logout: () => void;
   setLoading: (isLoading: boolean) => void;
   initialize: () => Promise<void>;
+  demoLogin: () => void;
 }
 
 export const useAuthStore = create<AuthStore>()(
@@ -52,7 +57,34 @@ export const useAuthStore = create<AuthStore>()(
 
       setLoading: (isLoading) => set({ isLoading }),
 
+      demoLogin: () =>
+        set({
+          user: mockUser,
+          accessToken: 'demo-token',
+          refreshToken: 'demo-refresh-token',
+          isAuthenticated: true,
+          isLoading: false,
+        }),
+
       initialize: async () => {
+        // In demo mode, auto-login with mock user if not authenticated
+        if (DEMO_MODE) {
+          const { isAuthenticated } = get();
+          if (!isAuthenticated) {
+            // Small delay to simulate loading
+            await new Promise(resolve => setTimeout(resolve, 300));
+          }
+          set({
+            user: mockUser,
+            accessToken: 'demo-token',
+            refreshToken: 'demo-refresh-token',
+            isAuthenticated: true,
+            isLoading: false,
+          });
+          return;
+        }
+
+        // Production mode - use real API
         const { accessToken } = get();
         if (!accessToken) {
           set({ isLoading: false, isAuthenticated: false });

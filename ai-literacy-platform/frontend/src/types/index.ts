@@ -281,6 +281,36 @@ export interface ComplianceStatus {
   recentIssues: string[];
 }
 
+// Dashboard Analytics types
+export interface DashboardAnalytics {
+  overallProgress: number;
+  complianceScore: number;
+  modulesCompleted: number;
+  totalModules: number;
+  scenariosCompleted: number;
+  totalScenarios: number;
+  averageScore: number;
+  timeSpent: number;
+  streakDays: number;
+  recentActivity: RecentActivity[];
+  riskBreakdown: RiskBreakdown;
+}
+
+export interface RecentActivity {
+  id: string;
+  type: 'scenario_completed' | 'module_started' | 'badge_earned' | 'certification';
+  title: string;
+  timestamp: string;
+  score?: number;
+}
+
+export interface RiskBreakdown {
+  UNACCEPTABLE: number;
+  HIGH: number;
+  LIMITED: number;
+  MINIMAL: number;
+}
+
 // API Response types
 export interface ApiResponse<T> {
   success: boolean;
