@@ -312,7 +312,7 @@ export const trainingAPI = {
       riskAwarnessScore: number;
       aiUsageScore: number;
     }
-  ): Promise<ApiResponse<SessionAttempt>> {
+  ): Promise<ApiResponse<{ id: string; status: string; completedAt: string; finalScore: number }>> {
     if (DEMO_MODE) {
       await mockDelay(500);
       return {
@@ -322,11 +322,10 @@ export const trainingAPI = {
           status: 'COMPLETED',
           completedAt: new Date().toISOString(),
           finalScore: Math.round((scores.complianceScore + scores.riskAwarnessScore + scores.aiUsageScore) / 3),
-          ...scores,
-        } as SessionAttempt,
+        },
       };
     }
-    return apiFetch<SessionAttempt>(`/training/sessions/${sessionId}/complete`, {
+    return apiFetch<{ id: string; status: string; completedAt: string; finalScore: number }>(`/training/sessions/${sessionId}/complete`, {
       method: 'POST',
       body: JSON.stringify(scores),
     });
@@ -403,19 +402,34 @@ export const analyticsAPI = {
       return {
         success: true,
         data: {
-          totalUsers: 156,
+          complianceReadiness: 78,
+          avgRiskScore: 25,
           activeUsers: 142,
-          averageComplianceScore: 78,
-          completionRate: 65,
-          modulesCompleted: 312,
-          averageTimePerModule: 35,
-          riskIncidents: 12,
-          topPerformers: [
-            { userId: 'user-001', name: 'John Doe', score: 95 },
-            { userId: 'user-002', name: 'Jane Smith', score: 92 },
-            { userId: 'user-003', name: 'Bob Wilson', score: 89 },
+          totalUsers: 156,
+          completedModules: 312,
+          avgPromptSuccessRate: 85,
+          departmentBreakdown: {
+            Engineering: { userCount: 45, avgComplianceScore: 82, avgRiskScore: 22, completionRate: 75 },
+            Marketing: { userCount: 30, avgComplianceScore: 76, avgRiskScore: 28, completionRate: 68 },
+            Sales: { userCount: 35, avgComplianceScore: 74, avgRiskScore: 30, completionRate: 62 },
+          },
+          riskTrend: [
+            { date: '2024-01-01', value: 35 },
+            { date: '2024-01-08', value: 32 },
+            { date: '2024-01-15', value: 28 },
+            { date: '2024-01-22', value: 25 },
           ],
-        } as OrganizationAnalytics,
+          complianceTrend: [
+            { date: '2024-01-01', value: 65 },
+            { date: '2024-01-08', value: 70 },
+            { date: '2024-01-15', value: 74 },
+            { date: '2024-01-22', value: 78 },
+          ],
+          recentViolations: [
+            { id: 'v1', type: 'data_leak', severity: 'HIGH', description: 'PII shared in prompt', createdAt: '2024-01-20' },
+            { id: 'v2', type: 'bias', severity: 'MEDIUM', description: 'Biased hiring analysis', createdAt: '2024-01-19' },
+          ],
+        },
       };
     }
     return apiFetch<OrganizationAnalytics>('/analytics/organization');

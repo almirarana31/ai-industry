@@ -131,7 +131,7 @@ export const useAuthStore = create<AuthStore>()(
         accessToken: state.accessToken,
         refreshToken: state.refreshToken,
       }),
-      onRehydrate: () => {
+      onRehydrateStorage: () => {
         return (state) => {
           // After rehydrating from storage, initialize auth
           state?.initialize();
