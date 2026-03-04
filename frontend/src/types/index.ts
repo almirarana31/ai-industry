@@ -84,8 +84,10 @@ export interface Scenario {
   initialEmails?: Email[];
   initialMessages?: NPCMessage[];
   npcName?: string;
+  npcRole?: string;
   moduleName?: string;
   timeLimit?: number;
+  difficulty?: Difficulty;
 }
 
 export type ScenarioType =

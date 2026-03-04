@@ -256,22 +256,17 @@ export const trainingAPI = {
     return apiFetch<Scenario>(`/training/scenarios/${id}`);
   },
 
-  async startSession(scenarioId: string): Promise<ApiResponse<SessionAttempt>> {
+  async startSession(scenarioId: string): Promise<ApiResponse<{ id: string }>> {
     if (DEMO_MODE) {
       await mockDelay(400);
       return {
         success: true,
         data: {
           id: `session-${Date.now()}`,
-          scenarioId,
-          userId: mockUser.id,
-          status: 'IN_PROGRESS',
-          startedAt: new Date().toISOString(),
-          interactions: [],
-        } as SessionAttempt,
+        },
       };
     }
-    return apiFetch<SessionAttempt>('/training/sessions/start', {
+    return apiFetch<{ id: string }>('/training/sessions/start', {
       method: 'POST',
       body: JSON.stringify({ scenarioId }),
     });
