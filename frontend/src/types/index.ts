@@ -54,10 +54,13 @@ export interface TrainingModule {
   category: ModuleCategory;
   difficulty: Difficulty;
   estimatedMinutes: number;
+  estimatedTime: number;
   objectives: string[];
   scenarios: Scenario[];
   isPublished: boolean;
   thumbnailUrl?: string;
+  completedScenarios?: number;
+  totalScenarios: number;
 }
 
 export type ModuleCategory =
@@ -76,6 +79,12 @@ export interface Scenario {
   context: string;
   scenarioType: ScenarioType;
   initialState?: Record<string, unknown>;
+  status?: 'not_started' | 'in_progress' | 'completed' | 'locked';
+  score?: number;
+  initialEmails?: Email[];
+  initialMessages?: NPCMessage[];
+  npcName?: string;
+  moduleName?: string;
 }
 
 export type ScenarioType =
@@ -291,7 +300,10 @@ export interface DashboardAnalytics {
   totalScenarios: number;
   averageScore: number;
   timeSpent: number;
+  totalTimeSpent: number;
   streakDays: number;
+  riskAwarenessScore: number;
+  aiUsageScore: number;
   recentActivity: RecentActivity[];
   riskBreakdown: RiskBreakdown;
 }
@@ -300,8 +312,10 @@ export interface RecentActivity {
   id: string;
   type: 'scenario_completed' | 'module_started' | 'badge_earned' | 'certification';
   title: string;
+  moduleName: string;
   timestamp: string;
-  score?: number;
+  date: string;
+  score: number;
 }
 
 export interface RiskBreakdown {
