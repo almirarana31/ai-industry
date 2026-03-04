@@ -49,7 +49,7 @@ const ComplianceMonitor: React.FC<ComplianceMonitorProps> = ({
         </svg>
       ),
     },
-    danger: {
+    violation: {
       color: 'text-red-500',
       bgColor: 'bg-red-500/10',
       borderColor: 'border-red-500/30',

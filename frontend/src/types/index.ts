@@ -136,7 +136,7 @@ export interface NPCMessage {
   npcRole?: string;
   tone?: NPCTone;
   riskFlags?: string[];
-  timestamp: Date;
+  timestamp: Date | string;
 }
 
 export type NPCTone = 'NEUTRAL' | 'FRIENDLY' | 'URGENT' | 'SKEPTICAL' | 'DEMANDING' | 'SUPPORTIVE';

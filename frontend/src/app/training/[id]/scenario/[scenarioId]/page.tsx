@@ -19,6 +19,7 @@ export default function ScenarioPage() {
     setAIMessages,
     setComplianceStatus,
     resetSimulation,
+    complianceStatus,
   } = useSimulationStore();
 
   const [scenario, setScenario] = React.useState<Scenario | null>(null);
@@ -115,18 +116,19 @@ export default function ScenarioPage() {
         const { complianceImpact, isCorrect } = response.data;
         
         // Update compliance based on decision
-        setComplianceStatus((prev) => ({
-          ...prev,
-          score: Math.max(0, Math.min(100, prev.score + complianceImpact)),
-          level: prev.score + complianceImpact >= 80 
+        const newScore = Math.max(0, Math.min(100, complianceStatus.score + complianceImpact));
+        setComplianceStatus({
+          ...complianceStatus,
+          score: newScore,
+          level: newScore >= 80 
             ? 'safe' 
-            : prev.score + complianceImpact >= 50 
+            : newScore >= 50 
               ? 'warning' 
-              : 'danger',
+              : 'violation',
           recentIssues: !isCorrect 
-            ? [...prev.recentIssues, context].slice(-5) 
-            : prev.recentIssues,
-        }));
+            ? [...complianceStatus.recentIssues, context].slice(-5) 
+            : complianceStatus.recentIssues,
+        });
       }
     } catch (error) {
       console.error('Failed to submit decision:', error);

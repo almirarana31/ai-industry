@@ -104,7 +104,7 @@ const EmailApp: React.FC<EmailAppProps> = ({
                         !email.isRead ? 'text-white font-semibold' : 'text-slate-300'
                       )}
                     >
-                      {email.from}
+                      {email.from.name}
                     </p>
                     <p
                       className={cn(
