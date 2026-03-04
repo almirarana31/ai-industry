@@ -139,9 +139,10 @@ export interface NPCMessage {
   riskFlags?: string[];
   timestamp: Date | string;
   metadata?: {
-    riskLevel?: 'low' | 'medium' | 'high';
+    riskLevel?: 'low' | 'medium' | 'high' | 'critical';
     complianceFlags?: string[];
     suggestedActions?: string[];
+    issues?: string[];
   };
 }
 
