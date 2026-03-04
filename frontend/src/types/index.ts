@@ -85,6 +85,7 @@ export interface Scenario {
   initialMessages?: NPCMessage[];
   npcName?: string;
   moduleName?: string;
+  timeLimit?: number;
 }
 
 export type ScenarioType =
@@ -137,6 +138,11 @@ export interface NPCMessage {
   tone?: NPCTone;
   riskFlags?: string[];
   timestamp: Date | string;
+  metadata?: {
+    riskLevel?: 'low' | 'medium' | 'high';
+    complianceFlags?: string[];
+    suggestedActions?: string[];
+  };
 }
 
 export type NPCTone = 'NEUTRAL' | 'FRIENDLY' | 'URGENT' | 'SKEPTICAL' | 'DEMANDING' | 'SUPPORTIVE';
@@ -260,10 +266,13 @@ export interface Email {
   };
   subject: string;
   body: string;
+  preview?: string;
   timestamp: Date;
   isRead: boolean;
   attachments?: Attachment[];
   requiresAction: boolean;
+  priority?: 'low' | 'normal' | 'high';
+  hasAttachment?: boolean;
 }
 
 export interface Attachment {

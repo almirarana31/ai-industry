@@ -93,7 +93,7 @@ const SimulationLayout: React.FC<SimulationLayoutProps> = ({
           ...complianceStatus,
           score: Math.min(complianceStatus.score, riskScores[response.metadata.riskLevel] || 100),
           level: response.metadata.riskLevel === 'critical' || response.metadata.riskLevel === 'high' 
-            ? 'danger' 
+            ? 'violation' 
             : response.metadata.riskLevel === 'medium' 
               ? 'warning' 
               : 'safe',

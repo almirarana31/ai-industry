@@ -148,10 +148,10 @@ const EmailApp: React.FC<EmailAppProps> = ({
                 <div className="flex items-center gap-4 mt-3">
                   <div className="flex items-center gap-2">
                     <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary-500 to-ai-purple flex items-center justify-center text-white text-sm font-medium">
-                      {selectedEmail.from[0].toUpperCase()}
+                      {selectedEmail.from.name[0].toUpperCase()}
                     </div>
                     <div>
-                      <p className="text-sm text-white">{selectedEmail.from}</p>
+                      <p className="text-sm text-white">{selectedEmail.from.name}</p>
                       <p className="text-xs text-slate-400">
                         to me • {formatRelativeTime(selectedEmail.timestamp)}
                       </p>
