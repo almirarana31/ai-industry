@@ -144,22 +144,3 @@ const config: Config = {
 };
 
 export default config;
-        '0%': { transform: 'translateY(10px)', opacity: '0' },
-          '100%': { transform: 'translateY(0)', opacity: '1' },
-        },
-        typing: {
-          '0%': { opacity: '0.2' },
-          '20%': { opacity: '1' },
-          '100%': { opacity: '0.2' },
-        },
-      },
-      transitionDuration: {
-        '150': '150ms',
-        '200': '200ms',
-      },
-    },
-  },
-  plugins: [],
-};
-
-export default config;

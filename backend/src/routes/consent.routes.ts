@@ -10,7 +10,7 @@ import {
   syncConsent,
   getConsentHistory,
 } from '../controllers/consent.controller';
-import { authenticate } from '../middleware/auth.middleware';
+import { authenticate } from '../middleware/auth';
 
 const router = Router();
 
