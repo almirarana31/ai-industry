@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Training Curriculum Outline - AI Literacy Academy</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0df2cc",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#10221f",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(40, 57, 54, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(13, 242, 204, 0.1);
+        }
+        .sidebar-item-active {
+            background: rgba(13, 242, 204, 0.1);
+            border-left: 3px solid #0df2cc;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="max-w-[1440px] mx-auto px-6 h-16 flex items-center justify-between">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-3xl">token</span>
+<h2 class="text-xl font-extrabold tracking-tight">AI Literacy <span class="text-slate-100 font-light">Academy</span></h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-semibold uppercase tracking-wider" href="#">Dashboard</a>
+<a class="text-primary text-sm font-semibold uppercase tracking-wider border-b-2 border-primary pb-1" href="#">Curriculum</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-semibold uppercase tracking-wider" href="#">Certifications</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-semibold uppercase tracking-wider" href="#">Enterprise</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+<input class="w-64 bg-slate-100 dark:bg-slate-800/50 border-none rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-1 focus:ring-primary" placeholder="Search modules..."/>
+</div>
+<button class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-400 hover:text-primary">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center border border-primary/40">
+<span class="material-symbols-outlined text-primary text-xl">person</span>
+</div>
+</div>
+</div>
+</header>
+<div class="max-w-[1440px] mx-auto flex">
+<!-- Sidebar Filters -->
+<aside class="w-72 sticky top-16 h-[calc(100vh-64px)] overflow-y-auto border-r border-slate-200 dark:border-slate-800 p-6 hidden lg:block">
+<div class="mb-8">
+<h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Skill Category</h3>
+<ul class="space-y-2">
+<li><a class="flex items-center gap-3 px-3 py-2 rounded-lg sidebar-item-active text-primary" href="#"><span class="material-symbols-outlined text-xl">dashboard</span> All Modules</a></li>
+<li><a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800/30 transition-colors" href="#"><span class="material-symbols-outlined text-xl">terminal</span> Prompt Engineering</a></li>
+<li><a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800/30 transition-colors" href="#"><span class="material-symbols-outlined text-xl">policy</span> Data Ethics</a></li>
+<li><a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800/30 transition-colors" href="#"><span class="material-symbols-outlined text-xl">gavel</span> AI Compliance</a></li>
+<li><a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800/30 transition-colors" href="#"><span class="material-symbols-outlined text-xl">psychology</span> Machine Learning</a></li>
+</ul>
+</div>
+<div class="mb-8">
+<h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Compliance Level</h3>
+<div class="space-y-3 px-3">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="rounded border-slate-700 bg-transparent text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm group-hover:text-primary">Tier 1: Foundational</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-slate-700 bg-transparent text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm group-hover:text-primary">Tier 2: Operational</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="rounded border-slate-700 bg-transparent text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm group-hover:text-primary">Tier 3: Strategic</span>
+</label>
+</div>
+</div>
+<div class="pt-6 border-t border-slate-800">
+<button class="w-full bg-primary text-background-dark font-bold py-3 rounded-xl flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined">restart_alt</span> Reset Filters
+                </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 p-6 md:p-10">
+<!-- Header Section -->
+<div class="mb-10">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<span class="text-primary font-bold text-sm tracking-[0.2em] uppercase">Enterprise Learning Paths</span>
+<h1 class="text-4xl md:text-5xl font-black mt-2 tracking-tight">Training Curriculum Outline</h1>
+<p class="text-slate-400 mt-4 max-w-2xl text-lg">
+                            Master the complexities of generative AI and regulatory compliance with our structured syllabus. Variant 1 of 10.
+                        </p>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 px-4 py-2 bg-slate-800/50 border border-slate-700 rounded-lg hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-xl">sort</span> Sort
+                        </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-slate-800/50 border border-slate-700 rounded-lg hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-xl">download</span> Syllabus PDF
+                        </button>
+</div>
+</div>
+</div>
+<!-- Curriculum Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="glass-card rounded-xl overflow-hidden flex flex-col group hover:border-primary/50 transition-all duration-300">
+<div class="relative h-48 overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark to-transparent z-10"></div>
+<div class="absolute top-4 left-4 z-20 flex gap-2">
+<span class="bg-primary/20 backdrop-blur-md text-primary px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider">Engineering</span>
+</div>
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Abstract blue and green digital landscape representing AI" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtdClW5uVzXckbSRHqsLYJYjIULWNtG0CCoFZ9Iz5l6grsp1OjQpRjocAAvRbU_9Mh9h5vxYgl3qlHdWnnfHNIkktKu6veBGkwpV32W_ZFcpViYBPBmTY3dWNPbulK_QW55vfuavpLI9R5RP9_s_pGk-hDfUHjWyA_OgpR1NxzdtT5n9uk4QjofYItzuWsAIh8EsrRBOGFFCSj0IjyzejxDYv_gxkBoJIXPnpm7M-AnTEdBDP5A5HpJLanuioapJDohzRGvsg0Jo0"/>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<h3 class="text-xl font-bold mb-2 text-white group-hover:text-primary transition-colors">Prompt Engineering Mastery</h3>
+<p class="text-sm text-slate-400 mb-6 flex-1">Advanced techniques for LLM optimization, iterative refining, and multi-shot prompting strategies for enterprise use-cases.</p>
+<div class="space-y-3">
+<div class="flex items-center justify-between text-xs text-slate-500 font-medium">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span> 4 Hours
+                                </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">signal_cellular_alt</span> Advanced
+                                </div>
+</div>
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[65%] rounded-full"></div>
+</div>
+<div class="flex justify-between items-center mt-4">
+<span class="text-xs font-bold text-slate-500">65% Enrolled</span>
+<button class="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">Start Module <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="glass-card rounded-xl overflow-hidden flex flex-col group hover:border-primary/50 transition-all duration-300">
+<div class="relative h-48 overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark to-transparent z-10"></div>
+<div class="absolute top-4 left-4 z-20 flex gap-2">
+<span class="bg-yellow-500/20 backdrop-blur-md text-yellow-500 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider">Ethics</span>
+</div>
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Conceptual data visual representing ethical data flow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7ZCKL46spTbDwlOTLUm-yQF69w3Ie8iylvZMJZWMDFU6NOF0PHBkTyah58r9qlvlNkeoEhVSxLP2QG8si-gbRtYmvgynUBeTUboVik3VLgtxnGYYL1-1aIi3QEygszjf-NSLvykdRfh9InVskaSszjz0dtS7ek4oW678hs_RqVc186Uikvb4sTC0966pvVns7qOGDe4oXtB-Q44OEyK1__JxhEo56EN0Cqbw5kDhkq5Qkl25RTw-xeVh_iwxrX1o86s-kUWI158U"/>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<h3 class="text-xl font-bold mb-2 text-white group-hover:text-primary transition-colors">Data Ethics for Enterprise</h3>
+<p class="text-sm text-slate-400 mb-6 flex-1">Navigating data privacy, mitigating algorithmic bias, and establishing governance frameworks for ethical AI deployment.</p>
+<div class="space-y-3">
+<div class="flex items-center justify-between text-xs text-slate-500 font-medium">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span> 3 Hours
+                                </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">signal_cellular_alt</span> Intermediate
+                                </div>
+</div>
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[40%] rounded-full"></div>
+</div>
+<div class="flex justify-between items-center mt-4">
+<span class="text-xs font-bold text-slate-500">40% Enrolled</span>
+<button class="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">Start Module <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="glass-card rounded-xl overflow-hidden flex flex-col group hover:border-primary/50 transition-all duration-300">
+<div class="relative h-48 overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark to-transparent z-10"></div>
+<div class="absolute top-4 left-4 z-20 flex gap-2">
+<span class="bg-red-500/20 backdrop-blur-md text-red-500 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider">Regulatory</span>
+</div>
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Close up of gavel or legal pillar imagery" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyIdrX_SL6qxHplrRt24t0BxRxoZDUDvUN6jfWhGH_dycgecOdnzVna6kvU8nFYAfDf6Wn0I-zqHTeNuANSMS4y9YPTmsj4oQon4CRfrlhuAAjLnEeu5ehrbiLwnd57jOg-lyIP5ytbIHg67sMp641aPg9h3Lc1vYrkF01DHBv23Te_gJR3ENrf2pZBAA_5ILqiLkeqpA8bTuBIrnKXQt-iO7sFgH914pLCTDNrOMTJ2b_ymU_UTracTC9WjbA4ria5yqaxwSCHvg"/>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<h3 class="text-xl font-bold mb-2 text-white group-hover:text-primary transition-colors">EU AI Act Compliance</h3>
+<p class="text-sm text-slate-400 mb-6 flex-1">Deep dive into the latest legal frameworks, liability models, and practical compliance steps for the European market.</p>
+<div class="space-y-3">
+<div class="flex items-center justify-between text-xs text-slate-500 font-medium">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span> 5 Hours
+                                </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">signal_cellular_alt</span> Expert
+                                </div>
+</div>
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[20%] rounded-full"></div>
+</div>
+<div class="flex justify-between items-center mt-4">
+<span class="text-xs font-bold text-slate-500">20% Enrolled</span>
+<button class="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">Start Module <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="glass-card rounded-xl overflow-hidden flex flex-col group hover:border-primary/50 transition-all duration-300">
+<div class="relative h-48 overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark to-transparent z-10"></div>
+<div class="absolute top-4 left-4 z-20 flex gap-2">
+<span class="bg-primary/20 backdrop-blur-md text-primary px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider">Strategy</span>
+</div>
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Modern business workplace with high-tech screens" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLcBoIp-nWx0YpvS5wSbCSk5Ejfu0HZXZCifjRLoQKAz2-wmQn2q7JCGLiTWDEDfzv1FTFjImxgMpGAHc0Shd0LOgetqy93Y1YFCJyWg791CmWaCXz4hTUwO90WmOPjVDkdavKLGWA_RxjPcKeWT4-dXvYS2Pt7eS36OIchUaT6tIfxck_pMbtqL7gWSi-NlsX9WUjRHRng98hlBAjdw9BdnOX9MTQn7BqnkzLcOp_c4g2abF59Tqz03Vo9DmDlUCLLa54mf7mZhU"/>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<h3 class="text-xl font-bold mb-2 text-white group-hover:text-primary transition-colors">Generative AI Strategy</h3>
+<p class="text-sm text-slate-400 mb-6 flex-1">Integrating GenAI into enterprise workflows, ROI calculation, and change management for executive leadership.</p>
+<div class="space-y-3">
+<div class="flex items-center justify-between text-xs text-slate-500 font-medium">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span> 2 Hours
+                                </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">signal_cellular_alt</span> Beginner
+                                </div>
+</div>
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[85%] rounded-full"></div>
+</div>
+<div class="flex justify-between items-center mt-4">
+<span class="text-xs font-bold text-slate-500">85% Enrolled</span>
+<button class="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">Start Module <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="glass-card rounded-xl overflow-hidden flex flex-col group hover:border-primary/50 transition-all duration-300">
+<div class="relative h-48 overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark to-transparent z-10"></div>
+<div class="absolute top-4 left-4 z-20 flex gap-2">
+<span class="bg-orange-500/20 backdrop-blur-md text-orange-500 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider">Risk</span>
+</div>
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Network of connections with alert symbols" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgFsJ1QMkpUsiPB7VNu7gMZUzkHAdbi6wrxlQobXkmfpzi20c-yvEM65zG6sAc5MYqJzQXvyiGlrbImLCGWJQamMt2f06Uwr3gkO9D9yekHyktLxHJtoRU3QedUdh1QmXz5M5Vi_DamjEC7XdVHs4zKwvLLtmxmVdajQgj43r44ExCD4BjqvywALBljqqWcR9XkpTXHQ34BTeSEdI7EToBOUqkhQLBR9o33Zd1ffnrnQOFzehn83UtTiO9cHGJC3kQnbdpoK3xO-g"/>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<h3 class="text-xl font-bold mb-2 text-white group-hover:text-primary transition-colors">AI Risk Management</h3>
+<p class="text-sm text-slate-400 mb-6 flex-1">Identifying and mitigating shadow AI, model leakage, and security vulnerabilities in large scale implementations.</p>
+<div class="space-y-3">
+<div class="flex items-center justify-between text-xs text-slate-500 font-medium">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span> 4 Hours
+                                </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">signal_cellular_alt</span> Intermediate
+                                </div>
+</div>
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[30%] rounded-full"></div>
+</div>
+<div class="flex justify-between items-center mt-4">
+<span class="text-xs font-bold text-slate-500">30% Enrolled</span>
+<button class="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">Start Module <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="glass-card rounded-xl overflow-hidden flex flex-col group hover:border-primary/50 transition-all duration-300">
+<div class="relative h-48 overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark to-transparent z-10"></div>
+<div class="absolute top-4 left-4 z-20 flex gap-2">
+<span class="bg-purple-500/20 backdrop-blur-md text-purple-500 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider">Foundations</span>
+</div>
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Microscope and high precision technology background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGhWPjTeZq25HwjE9Cb_JYWxfJGvl-n_9hNoDh-1M38GsjJGLWTt-Ma2w67Qfnm7kG7QUq5SDcqQzb44I_tIKHivTXO5yS3CY13EzFZOQ9NEvKPIkZ2mkPAmM7IQKVRvBQJ_UNvwG5fuWRRzFh4A8mO955Suzo4rMVVPbwqdOrAYEa8N0W7_OBobKq_baOh3eJqJErENt8-1bpRT2Le7gk9SNSHg7aVsh4MietHYufu2n2_4pxiaW3inboGTBsh5Tcul8nc5JgqLY"/>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<h3 class="text-xl font-bold mb-2 text-white group-hover:text-primary transition-colors">Neural Network Basics</h3>
+<p class="text-sm text-slate-400 mb-6 flex-1">Foundational deep learning architecture concepts, backpropagation simplified, and the history of transformers.</p>
+<div class="space-y-3">
+<div class="flex items-center justify-between text-xs text-slate-500 font-medium">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule</span> 6 Hours
+                                </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">signal_cellular_alt</span> Beginner
+                                </div>
+</div>
+<div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[95%] rounded-full"></div>
+</div>
+<div class="flex justify-between items-center mt-4">
+<span class="text-xs font-bold text-slate-500">95% Enrolled</span>
+<button class="text-primary font-bold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">Start Module <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Pagination/Status -->
+<div class="mt-12 flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-slate-800 pt-8">
+<p class="text-sm text-slate-500">Showing 6 of 42 enterprise modules</p>
+<div class="flex items-center gap-2">
+<button class="h-10 w-10 flex items-center justify-center rounded-lg border border-slate-700 hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="h-10 w-10 flex items-center justify-center rounded-lg bg-primary text-background-dark font-bold">1</button>
+<button class="h-10 w-10 flex items-center justify-center rounded-lg border border-slate-700 hover:bg-slate-800 transition-colors">2</button>
+<button class="h-10 w-10 flex items-center justify-center rounded-lg border border-slate-700 hover:bg-slate-800 transition-colors">3</button>
+<button class="h-10 w-10 flex items-center justify-center rounded-lg border border-slate-700 hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</main>
+</div>
+</body></html>

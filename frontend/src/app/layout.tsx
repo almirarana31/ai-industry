@@ -1,10 +1,15 @@
 import type { Metadata } from 'next';
-import { Inter, JetBrains_Mono } from 'next/font/google';
+import { Inter, JetBrains_Mono, Plus_Jakarta_Sans } from 'next/font/google';
 import '@/styles/globals.css';
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-plus-jakarta',
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -13,9 +18,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'AI Literacy Platform - Enterprise Training for Responsible AI',
+  title: 'Sentinel - Enterprise Training for Responsible AI',
   description:
-    'Enterprise-grade AI literacy training platform with gamified simulations for EU AI Act compliance.',
+    'Enterprise-grade Sentinel training platform with gamified simulations for EU AI Act compliance.',
   keywords: [
     'AI training',
     'EU AI Act',
@@ -32,10 +37,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} dark`}>
-      <body className="font-sans antialiased bg-slate-950 text-slate-100">
+    <html lang="en" className={`${inter.variable} ${plusJakarta.variable} ${jetbrainsMono.variable} dark`}>
+      <head>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+      </head>
+      <body className="font-display antialiased bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen transition-colors duration-300 bg-mesh">
         {children}
       </body>
     </html>
   );
 }
+

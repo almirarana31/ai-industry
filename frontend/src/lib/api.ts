@@ -582,9 +582,153 @@ export const adminAPI = {
   },
 };
 
+// Consent API
+export const consentAPI = {
+  async getConsent(): Promise<ApiResponse<{
+    userId: string;
+    consents: Array<{
+      code: string;
+      name: string;
+      description: string;
+      is_agree: boolean;
+    }>;
+    lastSyncedAt: string | null;
+    consentVersion: string;
+  }>> {
+    if (DEMO_MODE) {
+      await mockDelay(300);
+      return {
+        success: true,
+        data: {
+          userId: 'user-123',
+          consents: [
+            {
+              code: '93778942',
+              name: 'Marketing Communications',
+              description: 'Receive marketing emails and promotional content',
+              is_agree: false,
+            },
+            {
+              code: '82458070',
+              name: 'Analytics & Performance',
+              description: 'Allow anonymized learning analytics for platform improvement',
+              is_agree: true,
+            },
+            {
+              code: '19319538',
+              name: 'Personalized AI Feedback',
+              description: 'Enable AI-powered personalized learning recommendations',
+              is_agree: true,
+            },
+          ],
+          lastSyncedAt: new Date().toISOString(),
+          consentVersion: '1.0',
+        },
+      };
+    }
+    return apiFetch('/consent');
+  },
+
+  async updateConsent(consents: Array<{
+    code: string;
+    is_agree: boolean;
+  }>): Promise<ApiResponse<{
+    userId: string;
+    consents: Array<{
+      code: string;
+      name: string;
+      description: string;
+      is_agree: boolean;
+    }>;
+    lastSyncedAt: string | null;
+    consentVersion: string;
+  }>> {
+    if (DEMO_MODE) {
+      await mockDelay(500);
+      return {
+        success: true,
+        data: {
+          userId: 'user-123',
+          consents: consents.map(c => ({
+            code: c.code,
+            name: 'Consent Name',
+            description: 'Consent Description',
+            is_agree: c.is_agree,
+          })),
+          lastSyncedAt: new Date().toISOString(),
+          consentVersion: '1.0',
+        },
+      };
+    }
+    return apiFetch('/consent', {
+      method: 'PUT',
+      body: JSON.stringify({ consents }),
+    });
+  },
+
+  async syncConsent(): Promise<ApiResponse<{
+    userId: string;
+    consents: Array<{
+      code: string;
+      name: string;
+      description: string;
+      is_agree: boolean;
+    }>;
+    lastSyncedAt: string | null;
+    consentVersion: string;
+  }>> {
+    if (DEMO_MODE) {
+      await mockDelay(800);
+      return {
+        success: true,
+        data: {
+          userId: 'user-123',
+          consents: [],
+          lastSyncedAt: new Date().toISOString(),
+          consentVersion: '1.0',
+        },
+      };
+    }
+    return apiFetch('/consent/sync', {
+      method: 'POST',
+    });
+  },
+
+  async getConsentHistory(limit?: number): Promise<ApiResponse<Array<{
+    id: string;
+    action: string;
+    details: object;
+    createdAt: string;
+  }>>> {
+    if (DEMO_MODE) {
+      await mockDelay(300);
+      return {
+        success: true,
+        data: [
+          {
+            id: 'log-1',
+            action: 'consent_updated',
+            details: { consents: ['93778942', '82458070'] },
+            createdAt: new Date(Date.now() - 86400000).toISOString(),
+          },
+          {
+            id: 'log-2',
+            action: 'consent_synced',
+            details: {},
+            createdAt: new Date(Date.now() - 172800000).toISOString(),
+          },
+        ],
+      };
+    }
+    const queryParams = limit ? `?limit=${limit}` : '';
+    return apiFetch(`/consent/history${queryParams}`);
+  },
+};
+
 export default {
   auth: authAPI,
   training: trainingAPI,
   analytics: analyticsAPI,
   admin: adminAPI,
+  consent: consentAPI,
 };

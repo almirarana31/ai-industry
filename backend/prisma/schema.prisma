@@ -71,6 +71,7 @@ model User {
   complianceScores  ComplianceScore[]
   refreshTokens     RefreshToken[]
   auditLogs         AuditLog[]
+  consents          UserConsent[]
 
   @@index([organizationId])
   @@index([email])
@@ -96,6 +97,37 @@ model RefreshToken {
 
   @@index([token])
   @@index([userId])
+}
+
+// ==========================================
+// CONSENT MANAGEMENT (Privasimu Integration)
+// ==========================================
+
+model UserConsent {
+  id                    String    @id @default(uuid())
+  
+  // Privasimu integration fields
+  privasimuToken        String?   @db.Text  // JWT token from Privasimu
+  privasimuTokenExpiry  DateTime?
+  collectionPointCode   String?               // Collection point identifier
+  
+  // Consent preferences (synced with Privasimu)
+  consents              Json      @default("[]")  // Array of {code, name, description, is_agree}
+  
+  // Metadata
+  lastSyncedAt          DateTime?
+  consentVersion        String    @default("1.0")
+  ipAddress             String?
+  userAgent             String?
+  
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+  
+  userId                String    @unique
+  user                  User      @relation(fields: [userId], references: [id])
+  
+  @@index([userId])
+  @@index([lastSyncedAt])
 }
 
 // ==========================================

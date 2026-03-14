@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Enterprise Tool Integrations | AI Literacy Training</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0df2cc",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#10221f",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .sidebar-active {
+            background: rgba(13, 242, 204, 0.1);
+            border-right: 2px solid #0df2cc;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<header class="flex items-center justify-between border-b border-slate-200 dark:border-primary/20 px-6 py-3 bg-background-light dark:bg-background-dark sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 bg-primary/20 rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">school</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight">AI Literacy</h2>
+</div>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Dashboard</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Courses</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Team</a>
+<a class="text-primary text-sm font-bold transition-colors" href="#">Settings</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="bg-slate-100 dark:bg-primary/5 border-none rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-1 focus:ring-primary w-64 text-slate-900 dark:text-slate-100" placeholder="Search settings..." type="text"/>
+</div>
+<button class="p-2 rounded-lg bg-slate-100 dark:bg-primary/10 text-slate-600 dark:text-slate-300 hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-primary/30 flex items-center justify-center border border-primary/50 overflow-hidden">
+<img alt="User" class="w-full h-full object-cover" data-alt="Corporate user profile avatar minimalist" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFrVAxTK6yhI3ZXCwHlW_NTaqV4RcVicqP-ZnSuM-NT_mY3s6UwQf2PyVSJfc9lpZcjjBvTchWZqzx3pEMnbQJTg17viTreABt1Mp8LLxC8BSI9QLyW-2EPpzzjIq8pWEqMQa376jJIv8-45Y1VyR5twDYrd879V720U6vt_wP2VdbR4xcMmiZEptdnF0V9-DfwGSUaPWm7IZI1nq_fmWpBmDtROlJ3H7lzgg-qbP0Te1i0wpqmyWPWfHTzU22sfRawpXJBLeZFD0"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1">
+<aside class="w-64 border-r border-slate-200 dark:border-primary/10 py-8 flex flex-col gap-2 bg-slate-50 dark:bg-background-dark/50">
+<div class="px-6 mb-4">
+<p class="text-xs font-bold uppercase tracking-widest text-slate-400 dark:text-slate-500">Enterprise Admin</p>
+</div>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-600 dark:text-slate-400 hover:bg-primary/5 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">General</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-600 dark:text-slate-400 hover:bg-primary/5 transition-all" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium">User Access</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 sidebar-active text-primary" href="#">
+<span class="material-symbols-outlined fill-1">extension</span>
+<span class="text-sm font-bold">Integrations</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-600 dark:text-slate-400 hover:bg-primary/5 transition-all" href="#">
+<span class="material-symbols-outlined">security</span>
+<span class="text-sm font-medium">Security &amp; Privacy</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-slate-600 dark:text-slate-400 hover:bg-primary/5 transition-all" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="text-sm font-medium">Subscription</span>
+</a>
+</aside>
+<main class="flex-1 p-8 lg:px-12">
+<div class="max-w-5xl mx-auto">
+<div class="mb-10">
+<h1 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-2">Enterprise Tool Integrations</h1>
+<p class="text-slate-500 dark:text-slate-400 max-w-2xl">Connect your existing workforce tools to automate enrollment, sync progress, and enable seamless single sign-on for your entire organization.</p>
+</div>
+<div class="flex gap-8 border-b border-slate-200 dark:border-primary/10 mb-8 overflow-x-auto">
+<button class="pb-4 border-b-2 border-primary text-primary font-bold text-sm whitespace-nowrap">Communication</button>
+<button class="pb-4 border-b-2 border-transparent text-slate-500 dark:text-slate-400 font-medium text-sm hover:text-slate-700 dark:hover:text-slate-200 whitespace-nowrap">Identity (SSO)</button>
+<button class="pb-4 border-b-2 border-transparent text-slate-500 dark:text-slate-400 font-medium text-sm hover:text-slate-700 dark:hover:text-slate-200 whitespace-nowrap">Learning Management (LMS)</button>
+<button class="pb-4 border-b-2 border-transparent text-slate-500 dark:text-slate-400 font-medium text-sm hover:text-slate-700 dark:hover:text-slate-200 whitespace-nowrap">Data Export</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="glass-card rounded-xl p-6 flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between mb-4">
+<div class="h-12 w-12 rounded-lg bg-[#4A154B]/10 flex items-center justify-center">
+<img alt="Slack" class="w-8 h-8" data-alt="Slack brand colorful logo icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSAY8z_ibaBi5OwRk2OrcP4L7O4gaVocZJzRf98f4qZi4cdFvDjcXehj7SbiReQ9EsmXA76OIwQf8nszeCdIvP6qSSCGFNjuros7Td1ngUkFUE8pIviN3G4s1dgkUHI1uGakvpE71R92xoRjkWj7ygpDovanl2NFzmTHyKc2FRcLMhCKJCP42AQNZp0PIpJ5-g2yGR3WtRXHRFSQapGJF_8rYSy-Pb3MEMgwylAQrjPKBnd87Wz20FDDOGfAaPSRgmJhSCpL55G34"/>
+</div>
+<span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-primary/20 text-primary uppercase tracking-wider">Active</span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Slack</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Send course reminders, daily AI tips, and certification notifications directly to Slack channels.</p>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-primary/5">
+<span class="text-xs text-slate-400 dark:text-slate-500 font-medium">Last synced: 2h ago</span>
+<div class="flex items-center gap-3">
+<button class="text-sm font-semibold text-slate-400 dark:text-slate-500 hover:text-slate-600">Settings</button>
+<div class="w-10 h-5 bg-primary rounded-full relative cursor-pointer">
+<div class="absolute right-0.5 top-0.5 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="glass-card rounded-xl p-6 flex flex-col justify-between opacity-80">
+<div>
+<div class="flex items-start justify-between mb-4">
+<div class="h-12 w-12 rounded-lg bg-[#4654A3]/10 flex items-center justify-center">
+<img alt="Teams" class="w-8 h-8" data-alt="Microsoft Teams brand purple logo icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdl449nwDtykUQZO4V5q-ixYNow_8Z3gasYrDWESMSzwBZ5Xm-jUAgAfVRuSsbg97oNg5tlXBGLiRa2WxPA32Ba3bn-ECMIXOPZZn1-UB51TqhBFG06TKcMIJDxYnZAbM0JcnSEdoPUTgkcd_yDqbC1xaZk-NUMRomlcBTmVvjvernO3AVbDK3RzM7dndhwl028wlsIrIbQIJqeZSQ57PMM2mv18gyCNNorWUvIRMM2-qH6ZnlqpznlZJ4aeQrVDjSwMtp10gF5Yk"/>
+</div>
+<span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400 uppercase tracking-wider">Not Configured</span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Microsoft Teams</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Integrate training modules directly into Teams tabs and enable automated bot reminders.</p>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-primary/5">
+<span class="text-xs text-slate-400 dark:text-slate-500 font-medium italic">Ready to connect</span>
+<div class="flex items-center gap-3">
+<button class="bg-primary hover:bg-primary/90 text-background-dark text-xs font-bold px-4 py-1.5 rounded-lg transition-all">Connect</button>
+<div class="w-10 h-5 bg-slate-300 dark:bg-slate-700 rounded-full relative cursor-pointer">
+<div class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="md:col-span-2 mt-8 mb-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+                                Identity Providers
+                            </h2>
+</div>
+<div class="glass-card rounded-xl p-6 flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between mb-4">
+<div class="h-12 w-12 rounded-lg bg-white flex items-center justify-center p-2">
+<img alt="Okta" class="w-full" data-alt="Okta minimalist black brand logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP5NiEZb2FnsoJrdFLPonUrxw4mXIBdzC32C5PZKjj6iY2vV_hd-TH7uNmD_YYH_GJ-8shE1x0T1sIqQemtfJyIvqfEZXNWQZVYjYDJZ4IbO2WUfqCGj5AlqMVfi9ukBceQcely0e6dZ8dr2oT6nXmu7GNEa7Etup-FqJE9_xaxQlfHLCU7sjtDGc-_bV5xT4ohEi_YrlmHVhwhMW3oGsYW3S-WVDSGfTHRgnYeiNCStgGJiqtODZ0RzXuXJvnveL0BaaNkDor-O4"/>
+</div>
+<span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-primary/20 text-primary uppercase tracking-wider">Active</span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Okta</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Provision and deprovision users automatically. Secure access with Enterprise Single Sign-On.</p>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-primary/5">
+<span class="text-xs text-slate-400 dark:text-slate-500 font-medium">SSO + Provisioning Enabled</span>
+<div class="flex items-center gap-3">
+<button class="text-sm font-semibold text-slate-400 dark:text-slate-500 hover:text-slate-600">Configure</button>
+<div class="w-10 h-5 bg-primary rounded-full relative cursor-pointer">
+<div class="absolute right-0.5 top-0.5 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="glass-card rounded-xl p-6 flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between mb-4">
+<div class="h-12 w-12 rounded-lg bg-white flex items-center justify-center p-2">
+<img alt="Entra ID" class="w-full" data-alt="Microsoft Entra ID color logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAhKP7aU9cuvW50bEWNpQ3hJNunkqsLS9lbTdAb5A1uQg_QZ0zJquMRIdv_uLb75IE6Z7pJQe4w3kCuBoDYYVO6-3Eh5oiWTPB-R9Rwr9ZxCHO-xyU8mijmSMKricUmkYD_QJJY49IOFpbpv7BvYVQ-Ny6KNUAb_vNVvGcf8Ovkxtp8ec-FxhkhO2hZPQjBqh4aALfRlhpM1HqrVdnh5FR5cuupSfaSpAS0DwIKlUFPvmc00x0xxFBnSYHSHvikC907Dc9xMjiDU4"/>
+</div>
+<span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400 uppercase tracking-wider">Not Configured</span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Microsoft Entra ID</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Formerly Azure AD. Sync your corporate directory and enable seamless sign-in for Microsoft accounts.</p>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-primary/5">
+<span class="text-xs text-slate-400 dark:text-slate-500 font-medium italic">Setup required</span>
+<div class="flex items-center gap-3">
+<button class="bg-primary hover:bg-primary/90 text-background-dark text-xs font-bold px-4 py-1.5 rounded-lg transition-all">Connect</button>
+<div class="w-10 h-5 bg-slate-300 dark:bg-slate-700 rounded-full relative cursor-pointer">
+<div class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-12 p-6 rounded-xl bg-primary/5 border border-primary/20 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-full bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">hub</span>
+</div>
+<div>
+<h4 class="text-slate-900 dark:text-white font-bold">Need a custom integration?</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400">Our API allows you to build custom connections for your internal infrastructure.</p>
+</div>
+</div>
+<button class="text-primary text-sm font-bold border border-primary px-6 py-2 rounded-lg hover:bg-primary/10 transition-all">
+                            View API Docs
+                        </button>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

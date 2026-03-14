@@ -3,6 +3,7 @@ import authRoutes from './auth.routes';
 import trainingRoutes from './training.routes';
 import analyticsRoutes from './analytics.routes';
 import adminRoutes from './admin.routes';
+import consentRoutes from './consent.routes';
 
 const router = Router();
 
@@ -21,5 +22,6 @@ router.use('/auth', authRoutes);
 router.use('/training', trainingRoutes);
 router.use('/analytics', analyticsRoutes);
 router.use('/admin', adminRoutes);
+router.use('/consent', consentRoutes);
 
 export default router;

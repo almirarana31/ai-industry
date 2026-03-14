@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My AI Certifications Gallery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0df2cc",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#10221f",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(13, 242, 204, 0.1);
+        }
+        .glass-card:hover {
+            border-color: rgba(13, 242, 204, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-primary/10 px-6 lg:px-20 py-4 bg-background-light dark:bg-background-dark/80 backdrop-blur-md sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-8 flex items-center justify-center bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary">school</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-extrabold leading-tight tracking-tight">AI Literacy Academy</h2>
+</div>
+<label class="hidden md:flex flex-col min-w-64 !h-10">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full overflow-hidden border border-slate-200 dark:border-primary/20">
+<div class="text-slate-500 dark:text-primary/60 flex items-center justify-center pl-4 bg-slate-100 dark:bg-primary/5">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-slate-100 dark:bg-primary/5 text-slate-900 dark:text-slate-100 focus:ring-0 placeholder:text-slate-500 dark:placeholder:text-primary/40 px-4 text-sm font-normal" placeholder="Search certifications..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-semibold transition-colors" href="#">Dashboard</a>
+<a class="text-primary text-sm font-semibold border-b-2 border-primary pb-1" href="#">Certifications</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-semibold transition-colors" href="#">Courses</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-semibold transition-colors" href="#">Community</a>
+</nav>
+<div class="flex gap-3">
+<button class="flex items-center justify-center rounded-lg size-10 bg-slate-100 dark:bg-primary/10 text-slate-600 dark:text-primary transition-all hover:bg-primary/20">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg size-10 bg-slate-100 dark:bg-primary/10 text-slate-600 dark:text-primary transition-all hover:bg-primary/20">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="Professional user profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDIL1dq01spCmJMjRaGiHiCdoJF0Sk0Og6qAZ8i8EoYItewjw38zM7InjH63H4NYAp6fQm4D4jqFVdelS8rQhEYu1ZRo5GlPjTnrNJq5hi9wv_Z003ScDW8BuJqg4v60dxt70mGxMV8IRsa1ZWXriVbXkdcVfYBOr9oL1eVONgLfoZDVHNVugoRyf7IDq1r9PD16PtxV3HoGaKa6PE8Lqf3jT7cx3nm7bDFRXhe4Gi7uZShhKGQsp1YmTGE8cTkZwwORSpCrV0LuM0");'>
+</div>
+</div>
+</header>
+<main class="flex flex-1 flex-col px-6 lg:px-40 py-10 max-w-[1440px] mx-auto w-full">
+<!-- Hero Section -->
+<div class="flex flex-wrap justify-between items-end gap-6 mb-12">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 w-fit">
+<span class="material-symbols-outlined text-primary text-sm">verified_user</span>
+<span class="text-primary text-xs font-bold uppercase tracking-wider">Enterprise Credential Hub</span>
+</div>
+<h1 class="text-slate-900 dark:text-slate-100 text-5xl font-black leading-tight tracking-tight">Digital Credentials</h1>
+<p class="text-slate-600 dark:text-slate-400 text-lg max-w-2xl">Manage, verify, and share your professional AI milestones with the global industry network.</p>
+</div>
+<div class="flex gap-4">
+<button class="flex items-center justify-center gap-2 rounded-lg px-6 py-3 bg-primary text-background-dark text-sm font-bold transition-transform hover:scale-105">
+<span class="material-symbols-outlined text-xl">share</span>
+<span>Share Public Profile</span>
+</button>
+</div>
+</div>
+<!-- Filters -->
+<div class="mb-10">
+<div class="flex border-b border-slate-200 dark:border-primary/10 gap-10">
+<button class="flex items-center gap-2 border-b-2 border-primary text-slate-900 dark:text-slate-100 pb-4 px-2 font-bold transition-all">
+<span class="material-symbols-outlined text-primary">workspace_premium</span>
+                            All Certificates
+                        </button>
+<button class="flex items-center gap-2 border-b-2 border-transparent text-slate-500 hover:text-primary pb-4 px-2 font-semibold transition-all">
+<span class="material-symbols-outlined">task_alt</span>
+                            Completed (12)
+                        </button>
+<button class="flex items-center gap-2 border-b-2 border-transparent text-slate-500 hover:text-primary pb-4 px-2 font-semibold transition-all">
+<span class="material-symbols-outlined">pending</span>
+                            In Progress (4)
+                        </button>
+</div>
+</div>
+<!-- Certificates Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Certificate Card 1 -->
+<div class="glass-card rounded-xl overflow-hidden flex flex-col group transition-all duration-300">
+<div class="relative h-48 bg-slate-800 flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent z-10"></div>
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-60" data-alt="Digital representation of AI Neural Networks certificate" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALEV_7_JjJbGkntbBnJsdc4AGmHwpNJg7hrGott6FZp2hSkV9Q_qUoFyfcjmP2rtc3_Q6nVFbCVACiNCOm3LxuAzew6B4nR23QVcMWUbB6v4wWuKWSHVktduSIhRmpaOhNqf2ykgjemd-spMMsSN5Ime3eAE509KsgC0jzvjCkz7XpL2wem9Z7cOarBxl2IdlEF5Fbydt-VRhlux_M2oVvIrDTmpNEET-usvLFLd3udewEEyrixwEfuNvJ164YfyWes1XxmAbN8Qc"/>
+<div class="absolute top-4 right-4 z-20">
+<span class="bg-primary/90 text-background-dark px-3 py-1 rounded text-xs font-bold">VERIFIED</span>
+</div>
+<span class="material-symbols-outlined text-6xl text-primary/40 relative z-20">cognition</span>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-3">
+<h3 class="text-slate-900 dark:text-slate-100 text-xl font-bold">Generative AI Specialist</h3>
+<span class="material-symbols-outlined text-primary">verified</span>
+</div>
+<div class="space-y-1 mb-6">
+<p class="text-slate-500 dark:text-slate-400 text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">calendar_today</span> Issued: March 14, 2024
+                                </p>
+<p class="text-slate-500 dark:text-slate-400 text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">fingerprint</span> ID: GAI-8829-XL
+                                </p>
+</div>
+<div class="mt-auto grid grid-cols-2 gap-3">
+<button class="flex items-center justify-center gap-2 rounded-lg py-2 bg-primary/10 text-primary border border-primary/20 text-xs font-bold hover:bg-primary hover:text-background-dark transition-all">
+<span class="material-symbols-outlined text-sm">download</span> PDF
+                                </button>
+<button class="flex items-center justify-center gap-2 rounded-lg py-2 bg-slate-200 dark:bg-primary/5 text-slate-700 dark:text-slate-200 text-xs font-bold hover:bg-slate-300 dark:hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined text-sm">add</span> LinkedIn
+                                </button>
+</div>
+</div>
+</div>
+<!-- Certificate Card 2 -->
+<div class="glass-card rounded-xl overflow-hidden flex flex-col group transition-all duration-300">
+<div class="relative h-48 bg-slate-800 flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent z-10"></div>
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-60" data-alt="Modern AI abstraction for Ethics certification" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCn_UPiqW8CutowBUCUwXro6XagrClwr81DNxKR4HvJOVHpYIq0HWYcgmOHC8WRyPjsrn6I3JD-fkZKmyG9md1sc7E_vRV4EUOu_FhtAw2OB-OGAEY39SGhNSpA9zIM3vFRzO4cm1ocO64eqMuP-CEbKmrge4QytpYZ_mHNCkmIux1HhC3vv-jeNRiOw2D7NPR9ri7eHfFqpbGSZTnyWImy0lpZDrVVYl7RUSeARAvuAAVcQTtb1ZzOjG8tv29_5a_08gOAod7lx0A"/>
+<div class="absolute top-4 right-4 z-20">
+<span class="bg-primary/90 text-background-dark px-3 py-1 rounded text-xs font-bold">VERIFIED</span>
+</div>
+<span class="material-symbols-outlined text-6xl text-primary/40 relative z-20">gavel</span>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-3">
+<h3 class="text-slate-900 dark:text-slate-100 text-xl font-bold">AI Ethics &amp; Governance</h3>
+<span class="material-symbols-outlined text-primary">verified</span>
+</div>
+<div class="space-y-1 mb-6">
+<p class="text-slate-500 dark:text-slate-400 text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">calendar_today</span> Issued: Jan 20, 2024
+                                </p>
+<p class="text-slate-500 dark:text-slate-400 text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">fingerprint</span> ID: ETH-0012-BB
+                                </p>
+</div>
+<div class="mt-auto grid grid-cols-2 gap-3">
+<button class="flex items-center justify-center gap-2 rounded-lg py-2 bg-primary/10 text-primary border border-primary/20 text-xs font-bold hover:bg-primary hover:text-background-dark transition-all">
+<span class="material-symbols-outlined text-sm">download</span> PDF
+                                </button>
+<button class="flex items-center justify-center gap-2 rounded-lg py-2 bg-slate-200 dark:bg-primary/5 text-slate-700 dark:text-slate-200 text-xs font-bold hover:bg-slate-300 dark:hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined text-sm">add</span> LinkedIn
+                                </button>
+</div>
+</div>
+</div>
+<!-- Locked Certificate Card -->
+<div class="glass-card rounded-xl overflow-hidden flex flex-col opacity-70 grayscale hover:grayscale-0 transition-all duration-300 border-dashed">
+<div class="relative h-48 bg-slate-900 flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 bg-background-dark/80 z-10 flex flex-col items-center justify-center">
+<span class="material-symbols-outlined text-5xl text-slate-500 mb-2">lock</span>
+<span class="text-slate-300 text-xs font-bold tracking-widest uppercase">Locked Milestone</span>
+</div>
+<img class="w-full h-full object-cover opacity-30" data-alt="Digital circuit background for locked certificate" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuULvvLk3HefVMdJb7Q_0ZenN2uCLTfqM7tjaZVItDTzGx4c7SOiJAlnKQYeNopqjmBrTMtJOQ5RFnkpdpkgHio7YqSeygdlw-j3HwIK8hWD6DYxNbgkdqLPWtTi_hBDWN8HLrSVJc1JMNQugNwb5uBjRbLpep6RB_aucW8-87Q03gpIfXFGVZO3Y5srmhae1yTbPbnu30CWxk3KLSsyzTPbHP3xqaP5Q_jNmbZ-pk4T0PB5Hi-bw2Cm9ZdNtCq9gc0DMSTxox_1Q"/>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-3">
+<h3 class="text-slate-400 text-xl font-bold">Neural Architect Expert</h3>
+<div class="group relative">
+<span class="material-symbols-outlined text-slate-600 cursor-help">info</span>
+<!-- Tooltip -->
+<div class="absolute bottom-full right-0 mb-2 w-64 p-3 bg-slate-800 text-slate-100 text-xs rounded-lg shadow-2xl opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-30 border border-primary/20">
+<p class="font-bold text-primary mb-1 uppercase tracking-tighter">Requirements</p>
+<ul class="space-y-1">
+<li class="flex items-center gap-1"><span class="material-symbols-outlined text-[10px] text-green-400">check_circle</span> Intro to PyTorch</li>
+<li class="flex items-center gap-1"><span class="material-symbols-outlined text-[10px] text-slate-500">radio_button_unchecked</span> Advanced Calculus II</li>
+<li class="flex items-center gap-1"><span class="material-symbols-outlined text-[10px] text-slate-500">radio_button_unchecked</span> 30hrs Lab Practice</li>
+</ul>
+</div>
+</div>
+</div>
+<p class="text-slate-600 text-sm mb-6">Master the creation of complex neural architectures and deep learning frameworks from scratch.</p>
+<div class="mt-auto">
+<button class="w-full flex items-center justify-center gap-2 rounded-lg py-2 bg-slate-800 text-slate-400 text-xs font-bold border border-slate-700 cursor-not-allowed">
+<span class="material-symbols-outlined text-sm">lock_open</span> View Progress Path
+                                </button>
+</div>
+</div>
+</div>
+<!-- Certificate Card 3 -->
+<div class="glass-card rounded-xl overflow-hidden flex flex-col group transition-all duration-300">
+<div class="relative h-48 bg-slate-800 flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent z-10"></div>
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-60" data-alt="Server and cloud icon representation for NLP" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkIH9iIPJ3-dlEcE7K_kQ8s7ZF9GulZPia22eaojYyFQDSMpWqVOrAYNOmFTrqA1k7yT441s0WkOe_DZsqzn0Vs6-vZ1JH2qo-rAQkfEV3AUCAM6NL1iZWSVJTTzYZNzZAtgCEXN16iK6q7nkdVxopooN2XjqqpBWjGJ4K6v_tgjjEirgNVvwKaacvCtbxBS3sOGCRDwgwMua-voFOIJjaRMIB7gqITr_yd4eFSmWUVcf9eT84TuFwhUXrpK47iTe6R5ujlYKzMa8"/>
+<div class="absolute top-4 right-4 z-20">
+<span class="bg-primary/90 text-background-dark px-3 py-1 rounded text-xs font-bold">VERIFIED</span>
+</div>
+<span class="material-symbols-outlined text-6xl text-primary/40 relative z-20">translate</span>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-3">
+<h3 class="text-slate-900 dark:text-slate-100 text-xl font-bold">NLP Advanced Mastery</h3>
+<span class="material-symbols-outlined text-primary">verified</span>
+</div>
+<div class="space-y-1 mb-6">
+<p class="text-slate-500 dark:text-slate-400 text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">calendar_today</span> Issued: Nov 12, 2023
+                                </p>
+<p class="text-slate-500 dark:text-slate-400 text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">fingerprint</span> ID: NLP-5510-QM
+                                </p>
+</div>
+<div class="mt-auto grid grid-cols-2 gap-3">
+<button class="flex items-center justify-center gap-2 rounded-lg py-2 bg-primary/10 text-primary border border-primary/20 text-xs font-bold hover:bg-primary hover:text-background-dark transition-all">
+<span class="material-symbols-outlined text-sm">download</span> PDF
+                                </button>
+<button class="flex items-center justify-center gap-2 rounded-lg py-2 bg-slate-200 dark:bg-primary/5 text-slate-700 dark:text-slate-200 text-xs font-bold hover:bg-slate-300 dark:hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined text-sm">add</span> LinkedIn
+                                </button>
+</div>
+</div>
+</div>
+<!-- Certificate Card 4 -->
+<div class="glass-card rounded-xl overflow-hidden flex flex-col group transition-all duration-300">
+<div class="relative h-48 bg-slate-800 flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent z-10"></div>
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-60" data-alt="Global data network abstract for AI Foundations" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxD7mI_bNtOoZ9i43iEUeNnXBr9rSYtbXNvU-PK4fuuIryzthHqVq8oh7tXrNOzLjM26NPWMNXi_lgdNgRvG8l-T2sPWl_ftGKfddUN8_REiSI2OoEJtLwnOyqo3NvxHTctHnWEZhZhYKlr05impFzgKulowxo4zC0axI7gXTomU1ijcHLs4vUQvdNZHhQHVXTHC0RxorwSXY9AOetcIhw0BXRVGLehEhb1Z8XjsjSXLTao8ZUzN_AJY-Cq0pLYgFV0IU9q8hnD3g"/>
+<div class="absolute top-4 right-4 z-20">
+<span class="bg-primary/90 text-background-dark px-3 py-1 rounded text-xs font-bold">VERIFIED</span>
+</div>
+<span class="material-symbols-outlined text-6xl text-primary/40 relative z-20">foundation</span>
+</div>
+<div class="p-6 flex flex-col flex-1">
+<div class="flex justify-between items-start mb-3">
+<h3 class="text-slate-900 dark:text-slate-100 text-xl font-bold">AI Business Strategy</h3>
+<span class="material-symbols-outlined text-primary">verified</span>
+</div>
+<div class="space-y-1 mb-6">
+<p class="text-slate-500 dark:text-slate-400 text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">calendar_today</span> Issued: Oct 05, 2023
+                                </p>
+<p class="text-slate-500 dark:text-slate-400 text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">fingerprint</span> ID: BIZ-9942-ZT
+                                </p>
+</div>
+<div class="mt-auto grid grid-cols-2 gap-3">
+<button class="flex items-center justify-center gap-2 rounded-lg py-2 bg-primary/10 text-primary border border-primary/20 text-xs font-bold hover:bg-primary hover:text-background-dark transition-all">
+<span class="material-symbols-outlined text-sm">download</span> PDF
+                                </button>
+<button class="flex items-center justify-center gap-2 rounded-lg py-2 bg-slate-200 dark:bg-primary/5 text-slate-700 dark:text-slate-200 text-xs font-bold hover:bg-slate-300 dark:hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined text-sm">add</span> LinkedIn
+                                </button>
+</div>
+</div>
+</div>
+<!-- Empty/Call to Action State Card -->
+<div class="rounded-xl flex flex-col items-center justify-center p-8 border-2 border-dashed border-primary/20 bg-primary/5 hover:bg-primary/10 transition-colors group cursor-pointer">
+<div class="size-16 rounded-full bg-primary/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl">add_task</span>
+</div>
+<h3 class="text-slate-900 dark:text-slate-100 font-bold text-lg mb-2">New Career Path?</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm text-center mb-6">Discover 40+ specialized certifications waiting for you.</p>
+<button class="px-6 py-2 bg-primary text-background-dark rounded-lg font-bold text-xs uppercase tracking-wide">Browse Academy</button>
+</div>
+</div>
+<!-- Pagination/Load More -->
+<div class="mt-16 flex flex-col items-center gap-4">
+<p class="text-slate-500 text-sm">Showing 5 of 12 active certifications</p>
+<button class="flex items-center gap-2 px-8 py-3 rounded-lg border border-primary/30 text-primary font-bold hover:bg-primary/5 transition-all">
+<span class="material-symbols-outlined">expand_more</span>
+                        Load More Credentials
+                    </button>
+</div>
+</main>
+<!-- Footer Section -->
+<footer class="mt-auto border-t border-slate-200 dark:border-primary/10 py-10 px-6 lg:px-40">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-4">
+<div class="size-6 bg-primary rounded-sm"></div>
+<p class="text-slate-500 text-sm">© 2024 AI Literacy Academy. All credentials are blockchain-verified.</p>
+</div>
+<div class="flex gap-6">
+<a class="text-slate-500 hover:text-primary transition-colors text-sm" href="#">Terms of Verification</a>
+<a class="text-slate-500 hover:text-primary transition-colors text-sm" href="#">Privacy Policy</a>
+<a class="text-slate-500 hover:text-primary transition-colors text-sm" href="#">Contact Registrar</a>
+</div>
+</div>
+</footer>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Enterprise Compliance Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0df2cc",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#10221f",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(13, 242, 204, 0.2);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="flex h-screen overflow-hidden">
+<!-- Side Navigation Bar -->
+<aside class="w-64 border-r border-slate-200 dark:border-primary/10 bg-white dark:bg-background-dark flex flex-col shrink-0">
+<div class="p-6 flex flex-col gap-8 h-full">
+<!-- Logo/Brand -->
+<div class="flex items-center gap-3">
+<div class="bg-primary/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary text-2xl">verified_user</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-slate-900 dark:text-white text-sm font-bold leading-tight">Enterprise Compliance</h1>
+<p class="text-slate-500 dark:text-primary/60 text-xs font-medium">AI Literacy Platform</p>
+</div>
+</div>
+<!-- Navigation Menu -->
+<nav class="flex flex-col gap-1 grow">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary border border-primary/20" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="text-sm font-semibold">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-primary/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">groups</span>
+<span class="text-sm font-medium">Team Progress</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-primary/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">gpp_maybe</span>
+<span class="text-sm font-medium">Risk Analysis</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-primary/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">warning</span>
+<span class="text-sm font-medium">Compliance Gaps</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-primary/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">school</span>
+<span class="text-sm font-medium">Training Modules</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-primary/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<!-- Footer Action -->
+<div class="mt-auto">
+<button class="w-full bg-primary hover:bg-primary/90 text-background-dark py-2.5 rounded-lg text-sm font-bold flex items-center justify-center gap-2 transition-all">
+<span class="material-symbols-outlined text-sm">download</span>
+                        Export Report
+                    </button>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col overflow-y-auto custom-scrollbar">
+<!-- Header -->
+<header class="h-16 border-b border-slate-200 dark:border-primary/10 flex items-center justify-between px-8 bg-white dark:bg-background-dark sticky top-0 z-10">
+<div class="flex items-center gap-8">
+<h2 class="text-slate-900 dark:text-white text-lg font-bold">Compliance Analytics</h2>
+<div class="relative min-w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+<input class="w-full bg-slate-100 dark:bg-primary/5 border-none focus:ring-1 focus:ring-primary rounded-lg pl-10 py-2 text-sm text-slate-200" placeholder="Search departments..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex gap-2">
+<button class="p-2 rounded-lg bg-slate-100 dark:bg-primary/5 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-lg bg-slate-100 dark:bg-primary/5 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">forum</span>
+</button>
+</div>
+<div class="h-8 w-px bg-slate-200 dark:bg-primary/10 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<p class="text-xs font-bold dark:text-white">Alex Morgan</p>
+<p class="text-[10px] text-slate-500 dark:text-primary/60">Compliance Manager</p>
+</div>
+<div class="h-10 w-10 rounded-full bg-primary/20 border-2 border-primary/40 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of Alex Morgan" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7pth5olKmVLjG1XtK1qzxQEuK5VRGrrzkJfih2oACipw5-2hyJ4Upq0LyvMSM5ThIRZyw2JYyaymqID9GRn4AnQP66Iuq-seMqvGtNQ-hFCN38hiDaSIF6Xu8yHtSOValxrFZYvkVB_B-JoPSHcDARLhUGMqGjRamnXENngiYd5AX3N1N8kEO4KyMuzqJTsMA4oO3Z7I3MU7PNp68asS38qg3lNp0iNm4Z_nFah5KejGYZ8dXchpZXE9ct-pW57CaecEL6oOkAb0"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="p-8 space-y-8">
+<!-- Title & Summary -->
+<div class="flex flex-wrap justify-between items-end gap-4">
+<div class="space-y-1">
+<h1 class="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Compliance Manager Reports</h1>
+<p class="text-slate-500 dark:text-slate-400">Real-time departmental risk and training performance analytics.</p>
+</div>
+<button class="bg-primary/10 hover:bg-primary/20 text-primary px-6 py-2.5 rounded-lg text-sm font-bold border border-primary/30 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">auto_awesome</span>
+                        Generate AI Insight
+                    </button>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="p-6 rounded-xl border border-slate-200 dark:border-primary/10 bg-white dark:bg-primary/5 space-y-2">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Total Completion</p>
+<div class="flex items-end justify-between">
+<h3 class="text-3xl font-bold dark:text-white">88%</h3>
+<span class="text-emerald-500 text-sm font-bold flex items-center"><span class="material-symbols-outlined text-xs">trending_up</span> +5%</span>
+</div>
+</div>
+<div class="p-6 rounded-xl border border-slate-200 dark:border-primary/10 bg-white dark:bg-primary/5 space-y-2">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">High Risk Depts</p>
+<div class="flex items-end justify-between">
+<h3 class="text-3xl font-bold dark:text-white">3</h3>
+<span class="text-rose-500 text-sm font-bold flex items-center"><span class="material-symbols-outlined text-xs">trending_down</span> -2%</span>
+</div>
+</div>
+<div class="p-6 rounded-xl border border-slate-200 dark:border-primary/10 bg-white dark:bg-primary/5 space-y-2">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Compliance Gap</p>
+<div class="flex items-end justify-between">
+<h3 class="text-3xl font-bold dark:text-white">12%</h3>
+<span class="text-rose-500 text-sm font-bold flex items-center"><span class="material-symbols-outlined text-xs">trending_down</span> -4%</span>
+</div>
+</div>
+<div class="p-6 rounded-xl border border-slate-200 dark:border-primary/10 bg-white dark:bg-primary/5 space-y-2">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Top Performers</p>
+<div class="flex items-end justify-between">
+<h3 class="text-3xl font-bold dark:text-white">156</h3>
+<span class="text-emerald-500 text-sm font-bold flex items-center"><span class="material-symbols-outlined text-xs">trending_up</span> +12%</span>
+</div>
+</div>
+</div>
+<!-- Visualization Row -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Department Risk Bar Chart -->
+<div class="lg:col-span-2 p-6 rounded-xl border border-slate-200 dark:border-primary/10 bg-white dark:bg-primary/5">
+<div class="flex justify-between items-center mb-6">
+<h4 class="font-bold dark:text-white">Risk Level by Department</h4>
+<div class="flex gap-2">
+<span class="flex items-center gap-1 text-[10px] text-slate-500 uppercase tracking-wider font-bold">
+<div class="w-2 h-2 rounded-full bg-primary"></div> Compliance
+                                </span>
+<span class="flex items-center gap-1 text-[10px] text-slate-500 uppercase tracking-wider font-bold">
+<div class="w-2 h-2 rounded-full bg-primary/30"></div> Risk
+                                </span>
+</div>
+</div>
+<div class="space-y-6 h-[300px] flex flex-col justify-between pt-4">
+<!-- Chart Bar Item 1 -->
+<div class="flex items-center gap-4">
+<span class="w-24 text-xs font-semibold dark:text-slate-400">Engineering</span>
+<div class="flex-1 h-8 flex gap-1 group">
+<div class="h-full bg-primary rounded-l-sm" style="width: 85%" title="Compliance: 85%"></div>
+<div class="h-full bg-primary/20 rounded-r-sm" style="width: 15%" title="Risk: 15%"></div>
+</div>
+<span class="w-12 text-right text-xs font-bold text-primary">85%</span>
+</div>
+<!-- Chart Bar Item 2 -->
+<div class="flex items-center gap-4">
+<span class="w-24 text-xs font-semibold dark:text-slate-400">Finance</span>
+<div class="flex-1 h-8 flex gap-1">
+<div class="h-full bg-primary rounded-l-sm" style="width: 92%"></div>
+<div class="h-full bg-primary/20 rounded-r-sm" style="width: 8%"></div>
+</div>
+<span class="w-12 text-right text-xs font-bold text-primary">92%</span>
+</div>
+<!-- Chart Bar Item 3 -->
+<div class="flex items-center gap-4">
+<span class="w-24 text-xs font-semibold dark:text-slate-400">Marketing</span>
+<div class="flex-1 h-8 flex gap-1">
+<div class="h-full bg-primary rounded-l-sm" style="width: 65%"></div>
+<div class="h-full bg-primary/20 rounded-r-sm" style="width: 35%"></div>
+</div>
+<span class="w-12 text-right text-xs font-bold text-primary">65%</span>
+</div>
+<!-- Chart Bar Item 4 -->
+<div class="flex items-center gap-4">
+<span class="w-24 text-xs font-semibold dark:text-slate-400">HR &amp; Admin</span>
+<div class="flex-1 h-8 flex gap-1">
+<div class="h-full bg-primary rounded-l-sm" style="width: 78%"></div>
+<div class="h-full bg-primary/20 rounded-r-sm" style="width: 22%"></div>
+</div>
+<span class="w-12 text-right text-xs font-bold text-primary">78%</span>
+</div>
+<!-- Chart Bar Item 5 -->
+<div class="flex items-center gap-4">
+<span class="w-24 text-xs font-semibold dark:text-slate-400">Legal</span>
+<div class="flex-1 h-8 flex gap-1">
+<div class="h-full bg-primary rounded-l-sm" style="width: 98%"></div>
+<div class="h-full bg-primary/20 rounded-r-sm" style="width: 2%"></div>
+</div>
+<span class="w-12 text-right text-xs font-bold text-primary">98%</span>
+</div>
+</div>
+</div>
+<!-- Compliance Heatmap Placeholder -->
+<div class="p-6 rounded-xl border border-slate-200 dark:border-primary/10 bg-white dark:bg-primary/5 flex flex-col">
+<h4 class="font-bold dark:text-white mb-6">Regional Risk Heatmap</h4>
+<div class="flex-1 bg-primary/5 rounded-lg relative overflow-hidden flex items-center justify-center">
+<div class="absolute inset-0 opacity-20">
+<!-- Abstract map grid -->
+<div class="grid grid-cols-6 grid-rows-6 h-full w-full border border-primary/20">
+<div class="border border-primary/10 bg-primary/20"></div>
+<div class="border border-primary/10"></div>
+<div class="border border-primary/10 bg-primary/40"></div>
+<div class="border border-primary/10"></div>
+<div class="border border-primary/10"></div>
+<div class="border border-primary/10 bg-primary/10"></div>
+<div class="border border-primary/10"></div>
+<div class="border border-primary/10 bg-primary/60"></div>
+<div class="border border-primary/10"></div>
+<div class="border border-primary/10"></div>
+<div class="border border-primary/10"></div>
+<div class="border border-primary/10"></div>
+<div class="border border-primary/10"></div>
+<div class="border border-primary/10"></div>
+<div class="border border-primary/10 bg-primary/30"></div>
+<div class="border border-primary/10"></div>
+<div class="border border-primary/10 bg-primary/20"></div>
+<div class="border border-primary/10"></div>
+</div>
+</div>
+<span class="material-symbols-outlined text-6xl text-primary/40">map</span>
+</div>
+<div class="mt-4 space-y-2">
+<div class="flex justify-between text-xs">
+<span class="text-slate-500">North America</span>
+<span class="font-bold text-primary">Low Risk</span>
+</div>
+<div class="flex justify-between text-xs">
+<span class="text-slate-500">EMEA</span>
+<span class="font-bold text-amber-500">Moderate</span>
+</div>
+<div class="flex justify-between text-xs">
+<span class="text-slate-500">APAC</span>
+<span class="font-bold text-primary">Low Risk</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Section: Gaps & Performers -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pb-8">
+<!-- Compliance Gaps List -->
+<div class="rounded-xl border border-slate-200 dark:border-primary/10 bg-white dark:bg-background-dark overflow-hidden">
+<div class="p-6 border-b border-slate-200 dark:border-primary/10 flex items-center justify-between">
+<h4 class="font-bold dark:text-white">Critical Compliance Gaps</h4>
+<span class="px-2 py-1 bg-rose-500/10 text-rose-500 text-[10px] font-bold rounded uppercase">Immediate Action</span>
+</div>
+<div class="divide-y divide-slate-200 dark:divide-primary/10">
+<div class="p-4 flex items-center gap-4 hover:bg-slate-50 dark:hover:bg-primary/5 transition-colors">
+<div class="w-10 h-10 rounded-lg bg-rose-500/10 flex items-center justify-center text-rose-500 shrink-0">
+<span class="material-symbols-outlined">security</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold dark:text-white">Data Privacy Certification</p>
+<p class="text-xs text-slate-500">Marketing Department - 42% Completion</p>
+</div>
+<button class="text-primary text-xs font-bold underline">Nudge Team</button>
+</div>
+<div class="p-4 flex items-center gap-4 hover:bg-slate-50 dark:hover:bg-primary/5 transition-colors">
+<div class="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-500 shrink-0">
+<span class="material-symbols-outlined">smart_toy</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold dark:text-white">AI Ethics Module 2</p>
+<p class="text-xs text-slate-500">Finance Team - 68% Completion</p>
+</div>
+<button class="text-primary text-xs font-bold underline">Nudge Team</button>
+</div>
+<div class="p-4 flex items-center gap-4 hover:bg-slate-50 dark:hover:bg-primary/5 transition-colors">
+<div class="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-500 shrink-0">
+<span class="material-symbols-outlined">history_edu</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold dark:text-white">Compliance Disclosure</p>
+<p class="text-xs text-slate-500">Sales Department - 75% Completion</p>
+</div>
+<button class="text-primary text-xs font-bold underline">Nudge Team</button>
+</div>
+</div>
+</div>
+<!-- Top Performers List -->
+<div class="rounded-xl border border-slate-200 dark:border-primary/10 bg-white dark:bg-background-dark overflow-hidden">
+<div class="p-6 border-b border-slate-200 dark:border-primary/10 flex items-center justify-between">
+<h4 class="font-bold dark:text-white">Top Training Performers</h4>
+<span class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase">Leaderboard</span>
+</div>
+<div class="divide-y divide-slate-200 dark:divide-primary/10">
+<div class="p-4 flex items-center gap-4 hover:bg-slate-50 dark:hover:bg-primary/5 transition-colors">
+<div class="w-10 h-10 rounded-full bg-slate-200 dark:bg-primary/10 overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Female professional portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdcyM5GyPd-d3LLSHRls92w_pduysCu2ncNWCmJzsAdiBRzEM8MDyKitNnVRNFW_bSvzf_Aik9RlueKzJ2jTT5-o3xXvc38n9iEKf2haUF6o-CIrmpgX_OsEAdYlOU-7QmXQBNJ1VqLl3bY5a71ayVnkmGOZK7BWreiammuC82apWN88yQrSt1O7twZWUSJlLyd8D6kqC0oqp1tAGPHz3vkhOFe_9aK_ATvf_QHPIs09eFq1ZK1O2r5mF90JvXmCTD2J75W5n0_Fk"/>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold dark:text-white">Sarah Jenkins</p>
+<p class="text-xs text-slate-500">Legal • 100% Score</p>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-lg fill-1">workspace_premium</span>
+<span class="text-xs font-bold">12 badges</span>
+</div>
+</div>
+<div class="p-4 flex items-center gap-4 hover:bg-slate-50 dark:hover:bg-primary/5 transition-colors">
+<div class="w-10 h-10 rounded-full bg-slate-200 dark:bg-primary/10 overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Male professional portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNpUIoaf6hTYicpJjml_zMYgHXcMa2zr4D5vf_64Crf6pz-RZ0k_4TvAMM60QUCLwSpFmVuOh7NgQl8OFZNTqXS1_M_CwCWfMiJaIdY8eUsgUDxuWXt4IerkyKJLg0p10D9fILRdzW8DyjiLxChU4tIgrVpZ16GIuwrRpZ7t8-yLI1HB6C2LduDPcQ1InWUhVlOQvl39ztn2esq3t67dFnEQcuDs03h54KMyQbfAZ0Ns1qAEYZxaDI0WRyTlelorBX0zVoZGgxTEE"/>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold dark:text-white">David Chen</p>
+<p class="text-xs text-slate-500">Engineering • 98% Score</p>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-lg fill-1">workspace_premium</span>
+<span class="text-xs font-bold">10 badges</span>
+</div>
+</div>
+<div class="p-4 flex items-center gap-4 hover:bg-slate-50 dark:hover:bg-primary/5 transition-colors">
+<div class="w-10 h-10 rounded-full bg-slate-200 dark:bg-primary/10 overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Female professional portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQocCm2Qid3BtVMkyTOehit7-5LuVlw1HxZtcKiKuwm325Fv-2YLpi1_7doxeV8xuscr4FkeXyvLGJ6C1Q7LBtz7N9-dmFmzmn50hEd1r3IMQSwOkPJaLWhDuzVV85POJbxHmMl2TIZGJPCshJn6TC97s8tSlxd0R8zU1Bm5BKLyk43uRqX151NEVaFCXPBA4fXCzXMV5r_CA5UyVlQ7nNTr1KaCfWTUgU_agKuUngWbgV8s5z28ZY2wZryrjtptSk0JlibCP4Nt4"/>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold dark:text-white">Elena Rodriguez</p>
+<p class="text-xs text-slate-500">Operations • 97% Score</p>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-lg fill-1">workspace_premium</span>
+<span class="text-xs font-bold">9 badges</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,220 @@
+<html class="dark"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0df2cc",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#10221f",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #283936;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-primary/10 px-10 py-3 bg-white dark:bg-background-dark sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4">
+<div class="size-6 text-primary">
+<span class="material-symbols-outlined text-3xl">school</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em]">AI Literacy Training</h2>
+</div>
+<nav class="hidden md:flex items-center gap-9">
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Dashboard</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Courses</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Resources</a>
+<a class="text-primary text-sm font-bold transition-colors" href="#">Support</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-6">
+<label class="hidden lg:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-slate-400 dark:text-slate-500 flex border-none bg-slate-100 dark:bg-primary/5 items-center justify-center pl-4 rounded-l-lg" data-icon="MagnifyingGlass">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-slate-100 focus:outline-0 focus:ring-0 border-none bg-slate-100 dark:bg-primary/5 focus:border-none h-full placeholder:text-slate-400 dark:placeholder:text-slate-500 px-4 rounded-l-none pl-2 text-sm font-normal" placeholder="Quick search..." value=""/>
+</div>
+</label>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-primary/5 text-slate-600 dark:text-slate-300 hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="User profile avatar of a professional mentor" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDy9LD-73pd9TG2Axsh-1wV5lpbTebbE0ZQhJ7s8q5KqAA7OhJqDi42aBR-qL6sUCqKVtXH17R9WvahUM9UW2jzCeNxVRfQi1k7DQ8V5M3-qQnFIximoswBlNJf3NT7XSckbWn37hF0C_A3EKduc940d_x4z9iuXcqvB964BoRNUgCJhieNaR9gjpJYaJwMVW38id5xadlJvpMVWA5g-XRE3Q2sUMRTfLR4WJ_n_ODTvsCtS7wC9_b78PRBlMIYpkW0dtfe0p7zQ4Q");'></div>
+</div>
+</div>
+</header>
+<div class="flex grow flex-col lg:flex-row px-4 md:px-10 lg:px-20 py-8 gap-8">
+<!-- Left Sidebar Navigation -->
+<aside class="w-full lg:w-72 flex flex-col gap-6">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary dark:bg-primary text-background-dark font-bold shadow-lg shadow-primary/10">
+<span class="material-symbols-outlined">menu_book</span>
+<p class="text-sm">Knowledge Base</p>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-primary/5 transition-all cursor-pointer text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">confirmation_number</span>
+<p class="text-sm font-medium">My Support Tickets</p>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-primary/5 transition-all cursor-pointer text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">article</span>
+<p class="text-sm font-medium">Documentation</p>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-primary/5 transition-all cursor-pointer text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">groups</span>
+<p class="text-sm font-medium">Community Forum</p>
+</div>
+</div>
+<div class="mt-4 p-6 rounded-2xl bg-slate-100 dark:bg-primary/5 border border-slate-200 dark:border-primary/10">
+<h3 class="font-bold text-slate-900 dark:text-slate-100 mb-2">Need immediate help?</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-4 leading-relaxed">Our AI assistant and support team are available 24/7 to assist with your learning journey.</p>
+<button class="w-full flex items-center justify-center gap-2 py-3 bg-primary text-background-dark font-bold rounded-lg hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-sm">chat_bubble</span>
+<span class="text-sm">Contact Support</span>
+</button>
+</div>
+<div class="flex flex-col gap-1 mt-auto">
+<div class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-primary/5 cursor-pointer text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-sm">Support Settings</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1">
+<div class="flex flex-col gap-8">
+<!-- Hero Search Section -->
+<div class="relative overflow-hidden rounded-3xl bg-slate-900 dark:bg-background-dark p-8 md:p-12 border border-slate-800 dark:border-primary/10">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 blur-[100px] -mr-32 -mt-32"></div>
+<div class="relative z-10">
+<h1 class="text-3xl md:text-4xl font-black text-white leading-tight mb-4 tracking-tight">How can we help you today?</h1>
+<p class="text-slate-400 text-base mb-8 max-w-xl">Find answers to frequently asked questions about the AI Literacy platform, technical requirements, and curriculum guides.</p>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary text-2xl">search</span>
+<input class="w-full h-16 bg-white/10 dark:bg-primary/5 border border-white/20 dark:border-primary/20 rounded-2xl pl-14 pr-6 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all" placeholder="Search for articles, guides, and tutorials..." type="text"/>
+</div>
+</div>
+</div>
+<!-- Categories Grid -->
+<div>
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-xl font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">grid_view</span>
+                            Browse Categories
+                        </h2>
+<a class="text-sm font-semibold text-primary hover:underline" href="#">View all</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Getting Started -->
+<div class="group p-6 rounded-2xl border border-slate-200 dark:border-primary/10 bg-white dark:bg-primary/5 hover:border-primary/50 transition-all cursor-pointer">
+<div class="size-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">rocket_launch</span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2">Getting Started</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4 leading-relaxed">Learn the basics of using the platform and navigating your first AI modules.</p>
+<div class="flex flex-col gap-2">
+<span class="text-xs font-semibold text-primary flex items-center gap-1">12 articles <span class="material-symbols-outlined text-[14px]">chevron_right</span></span>
+</div>
+</div>
+<!-- Policy Questions -->
+<div class="group p-6 rounded-2xl border border-slate-200 dark:border-primary/10 bg-white dark:bg-primary/5 hover:border-primary/50 transition-all cursor-pointer">
+<div class="size-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">gavel</span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2">Policy &amp; Ethics</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4 leading-relaxed">Enterprise guidelines, data privacy, and ethical AI usage framework.</p>
+<div class="flex flex-col gap-2">
+<span class="text-xs font-semibold text-primary flex items-center gap-1">8 articles <span class="material-symbols-outlined text-[14px]">chevron_right</span></span>
+</div>
+</div>
+<!-- Technical Support -->
+<div class="group p-6 rounded-2xl border border-slate-200 dark:border-primary/10 bg-white dark:bg-primary/5 hover:border-primary/50 transition-all cursor-pointer">
+<div class="size-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">build</span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2">Technical Support</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4 leading-relaxed">Troubleshoot login issues, API integrations, and system performance.</p>
+<div class="flex flex-col gap-2">
+<span class="text-xs font-semibold text-primary flex items-center gap-1">15 articles <span class="material-symbols-outlined text-[14px]">chevron_right</span></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Popular Articles Section -->
+<div class="mt-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-slate-100 mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">trending_up</span>
+                        Trending Topics
+                    </h2>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-4 rounded-xl bg-white dark:bg-primary/5 border border-slate-200 dark:border-primary/5 hover:bg-slate-100 dark:hover:bg-primary/10 transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-400">description</span>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-200">Resetting your enterprise login credentials</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">arrow_forward</span>
+</div>
+<div class="flex items-center justify-between p-4 rounded-xl bg-white dark:bg-primary/5 border border-slate-200 dark:border-primary/5 hover:bg-slate-100 dark:hover:bg-primary/10 transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-400">description</span>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-200">How to export course completion certificates</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">arrow_forward</span>
+</div>
+<div class="flex items-center justify-between p-4 rounded-xl bg-white dark:bg-primary/5 border border-slate-200 dark:border-primary/5 hover:bg-slate-100 dark:hover:bg-primary/10 transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-400">description</span>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-200">Understanding AI hallucination detection tools</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">arrow_forward</span>
+</div>
+<div class="flex items-center justify-between p-4 rounded-xl bg-white dark:bg-primary/5 border border-slate-200 dark:border-primary/5 hover:bg-slate-100 dark:hover:bg-primary/10 transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-400">description</span>
+<span class="text-sm font-medium text-slate-700 dark:text-slate-200">Team manager dashboard overview</span>
+</div>
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Floating Chat Widget (Bottom Right) -->
+<div class="fixed bottom-6 right-6 z-[100]">
+<button class="size-14 rounded-full bg-primary text-background-dark shadow-2xl shadow-primary/40 flex items-center justify-center hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-2xl">forum</span>
+</button>
+</div>
+</div>
+</body></html>

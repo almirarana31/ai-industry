@@ -1,4 +1,4 @@
-// Design Tokens for AI Literacy Training Platform
+// Design Tokens for Sentinel
 // Based on enterprise SaaS standards with dark mode default
 
 export const colors = {

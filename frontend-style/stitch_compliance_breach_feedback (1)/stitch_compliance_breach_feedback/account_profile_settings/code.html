@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Account Profile Settings | AI Literacy Academy</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0df2cc",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#10221f",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 px-10 py-3 bg-background-light dark:bg-background-dark sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-6">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">AI Literacy Academy</h2>
+</div>
+<div class="flex items-center gap-9">
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Courses</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Dashboard</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Certifications</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Community</a>
+</div>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<label class="flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full overflow-hidden border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50">
+<div class="text-slate-400 flex items-center justify-center pl-4">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-transparent focus:outline-0 focus:ring-0 text-slate-900 dark:text-white placeholder:text-slate-500 text-sm" placeholder="Search resources..." value=""/>
+</div>
+</label>
+<div class="flex gap-3">
+<button class="flex items-center justify-center rounded-lg size-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-white hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg size-10 bg-primary text-background-dark hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="Professional portrait of a male consultant" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDzSyQvn0Tq1cqBA9EeNl1ifG35ysJb2X7zOSBzTzdalGjppZ4X0gb9W9QAklpQI5Av2eyJ9BrKWRYwku69mWOf7CNBDO1MonNE-gmRXMa-dfuC46U2sKNyfCiPLa9CxR00yvz40Wi0JcCEVMOoYi5l6ogZ8joMHzq_0AfVvrrznHFqLW4Jo9xJC-Plnhq8CHC9wOAMOU9HKLZwvckq5kREJJtJDv2nKy-ZiATYrouPOqE2m4nNmA8WSPp8BubtyVoTsVDfrQ7A0Do");'></div>
+</div>
+</header>
+<main class="flex-1 max-w-[1200px] mx-auto w-full flex gap-8 px-10 py-10">
+<!-- Sidebar Navigation -->
+<aside class="w-64 shrink-0">
+<div class="flex flex-col gap-6 sticky top-28">
+<div>
+<h3 class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-4 px-3">System Settings</h3>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary font-semibold transition-all" href="#">
+<span class="material-symbols-outlined text-[22px]">person</span>
+<span class="text-sm">Account Profile</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all" href="#">
+<span class="material-symbols-outlined text-[22px]">shield</span>
+<span class="text-sm">Security &amp; Privacy</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all" href="#">
+<span class="material-symbols-outlined text-[22px]">hub</span>
+<span class="text-sm">Integrations</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all" href="#">
+<span class="material-symbols-outlined text-[22px]">payments</span>
+<span class="text-sm">Billing &amp; Plan</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all" href="#">
+<span class="material-symbols-outlined text-[22px]">notifications_active</span>
+<span class="text-sm">Notifications</span>
+</a>
+</nav>
+</div>
+<div class="pt-6 border-t border-slate-200 dark:border-slate-800">
+<div class="p-4 rounded-xl bg-gradient-to-br from-primary/10 to-transparent border border-primary/20">
+<p class="text-xs font-bold text-primary uppercase mb-2">Pro Member Status</p>
+<p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-3">You have access to all enterprise training modules.</p>
+<div class="w-full bg-slate-200 dark:bg-slate-700 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[85%]"></div>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<section class="flex-1 max-w-3xl">
+<div class="flex flex-col gap-8">
+<!-- Header -->
+<div>
+<h1 class="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Account Profile</h1>
+<p class="text-slate-500 dark:text-slate-400 mt-2">Manage your public presence and professional credentials on the AI Literacy Academy platform.</p>
+</div>
+<!-- Profile Photo Section -->
+<div class="bg-white dark:bg-slate-900/40 rounded-xl p-8 border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-6">
+<div class="relative group">
+<div class="size-24 rounded-full bg-center bg-cover border-4 border-primary/20" data-alt="Portrait of Alex Rivera" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAnfK8cH6ThJO0WeGjc8Jl3m62OBzI1mc4IjdQB8qxjr6RQ3EYWcQ8-UU75oRkw0hp4zfH8uqqPvClSP616kBDTiy6X49SszjDdFgA0asIQ-P2LMnYeR9zoVo23Hy7N23-BJimEOb5PWpcWkLNoWoHDh0dJl6EmSAvE0d7lspha9BJTbx0wXKniN-qC28f89sFiNNOhtS4JRKwcRWiQ0FX2SCCd_zM5AY3EpLq8183bp1wJoX1ZoWVrgAr01mr6n4C_7XxhOuVME_I");'></div>
+<button class="absolute bottom-0 right-0 size-8 bg-primary rounded-full flex items-center justify-center text-background-dark border-4 border-white dark:border-background-dark shadow-lg">
+<span class="material-symbols-outlined text-sm">photo_camera</span>
+</button>
+</div>
+<div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Alex Rivera</h3>
+<p class="text-slate-500 dark:text-slate-400">Senior AI Strategy Consultant</p>
+<div class="flex gap-2 mt-3">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-primary/20 text-primary">Certified Expert</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-500">Instructor</span>
+</div>
+</div>
+</div>
+<button class="px-5 py-2.5 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white text-sm font-bold rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">
+                            Replace Photo
+                        </button>
+</div>
+</div>
+<!-- Personal Information Form -->
+<div class="grid grid-cols-1 gap-8">
+<div class="bg-white dark:bg-slate-900/40 rounded-xl p-8 border border-slate-200 dark:border-slate-800 shadow-sm">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white mb-6">Personal Details</h2>
+<div class="grid grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-500">First Name</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-3 focus:ring-1 focus:ring-primary focus:border-primary outline-none text-slate-900 dark:text-white" type="text" value="Alex"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-500">Last Name</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-3 focus:ring-1 focus:ring-primary focus:border-primary outline-none text-slate-900 dark:text-white" type="text" value="Rivera"/>
+</div>
+<div class="flex flex-col gap-2 col-span-2">
+<label class="text-sm font-semibold text-slate-500">Email Address</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-3 focus:ring-1 focus:ring-primary focus:border-primary outline-none text-slate-900 dark:text-white" type="email" value="alex.rivera@enterprise-ai.com"/>
+</div>
+<div class="flex flex-col gap-2 col-span-2">
+<label class="text-sm font-semibold text-slate-500">Bio</label>
+<textarea class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-3 focus:ring-1 focus:ring-primary focus:border-primary outline-none text-slate-900 dark:text-white" rows="3">Expert in Generative AI implementation for Fortune 500 companies. Focused on ethical AI scaling and literacy.</textarea>
+</div>
+</div>
+</div>
+<!-- Profile Features -->
+<div class="grid grid-cols-2 gap-6">
+<div class="bg-white dark:bg-slate-900/40 rounded-xl p-8 border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-bold text-slate-900 dark:text-white">Public Profile</h3>
+<div class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out bg-primary focus:outline-none">
+<span class="translate-x-5 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+</div>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 leading-normal">Make your profile and certifications visible to potential employers.</p>
+</div>
+<div class="bg-white dark:bg-slate-900/40 rounded-xl p-8 border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-bold text-slate-900 dark:text-white">LinkedIn Sync</h3>
+<div class="flex items-center gap-2">
+<span class="flex size-2 rounded-full bg-emerald-500"></span>
+<span class="text-xs font-bold text-emerald-500">CONNECTED</span>
+</div>
+</div>
+<p class="text-sm text-slate-500 dark:text-slate-400 leading-normal">Automatically post certification milestones to your LinkedIn feed.</p>
+</div>
+</div>
+<!-- Password Management -->
+<div class="bg-white dark:bg-slate-900/40 rounded-xl p-8 border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">key</span>
+<h2 class="text-xl font-bold text-slate-900 dark:text-white">Security Credentials</h2>
+</div>
+<div class="grid grid-cols-1 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-500">Current Password</label>
+<div class="relative">
+<input class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-3 focus:ring-1 focus:ring-primary focus:border-primary outline-none text-slate-900 dark:text-white" type="password" value="••••••••••••"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 cursor-pointer">visibility</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-500">New Password</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-3 focus:ring-1 focus:ring-primary focus:border-primary outline-none text-slate-900 dark:text-white" placeholder="Enter new password" type="password"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-500">Confirm New Password</label>
+<input class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-lg px-4 py-3 focus:ring-1 focus:ring-primary focus:border-primary outline-none text-slate-900 dark:text-white" placeholder="Repeat new password" type="password"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center justify-end gap-4 pt-4">
+<button class="px-6 py-3 text-sm font-bold text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors">Discard Changes</button>
+<button class="px-8 py-3 bg-primary text-background-dark text-sm font-bold rounded-lg shadow-[0_0_20px_rgba(13,242,204,0.3)] hover:shadow-[0_0_25px_rgba(13,242,204,0.5)] transition-all">Save Profile Changes</button>
+</div>
+<!-- Danger Zone -->
+<div class="mt-8 pt-8 border-t border-slate-200 dark:border-slate-800">
+<div class="bg-red-500/5 rounded-xl p-8 border border-red-500/20">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-bold text-red-500">Delete Account</h3>
+<p class="text-sm text-slate-500 mt-1">Permanently remove your account and all associated certification data.</p>
+</div>
+<button class="px-5 py-2.5 border border-red-500/30 text-red-500 text-sm font-bold rounded-lg hover:bg-red-500 hover:text-white transition-all">Delete Account</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="border-t border-slate-200 dark:border-slate-800 px-10 py-8 bg-white dark:bg-background-dark/50">
+<div class="max-w-[1200px] mx-auto flex justify-between items-center">
+<div class="flex items-center gap-4 text-slate-500 text-sm">
+<span>© 2024 AI Literacy Academy. All rights reserved.</span>
+<span class="text-slate-300 dark:text-slate-700">|</span>
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+</div>
+<div class="flex gap-4">
+<div class="size-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 hover:text-primary cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</div>
+<div class="size-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 hover:text-primary cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[18px]">help</span>
+</div>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

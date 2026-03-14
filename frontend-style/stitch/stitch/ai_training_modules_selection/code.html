@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Training Modules Selection</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#6366f1",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#020617",
+                        accent: {
+                            success: "#10b981",
+                            info: "#3b82f6",
+                            warning: "#f59e0b",
+                            locked: "#94a3b8"
+                        }
+                    },
+                    fontFamily: {
+                        display: ["Plus Jakarta Sans", "sans-serif"],
+                        mono: ["JetBrains Mono", "monospace"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "1rem",
+                        'xl': '1.5rem',
+                        '2xl': '2rem',
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .dark .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .pulse-blue {
+            animation: pulse-blue 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-blue {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .7; transform: scale(1.05); }
+        }
+        .glow-green {
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+        }
+        .dark .glow-green {
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.2);
+        }
+        .bg-mesh {
+            background-image: radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0, transparent 50%),
+                              radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.1) 0, transparent 50%);
+        }
+        .locked-overlay {
+            background: rgba(0, 0, 0, 0.05);
+            backdrop-filter: grayscale(1) blur(2px);
+        }
+        .dark .locked-overlay {
+            background: rgba(0, 0, 0, 0.4);
+        }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen transition-colors duration-300 bg-mesh">
+<nav class="sticky top-0 z-50 px-6 py-4 flex justify-between items-center glass-card border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white">
+<span class="material-icons-round">bolt</span>
+</div>
+<span class="font-extrabold text-xl tracking-tight">AI<span class="text-primary">CORE</span></span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-4 px-4 py-2 bg-slate-100 dark:bg-slate-800/50 rounded-full">
+<div class="flex items-center gap-2">
+<span class="material-icons-round text-accent-warning text-sm">stars</span>
+<span class="text-sm font-bold font-mono">2,450 XP</span>
+</div>
+<div class="h-4 w-px bg-slate-300 dark:bg-slate-700"></div>
+<div class="flex items-center gap-2">
+<span class="material-icons-round text-primary text-sm">workspace_premium</span>
+<span class="text-sm font-bold font-mono">Rank 12</span>
+</div>
+</div>
+<button class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-icons-round dark:hidden">dark_mode</span>
+<span class="material-icons-round hidden dark:block text-yellow-400">light_mode</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-slate-300 dark:bg-slate-700 border-2 border-primary overflow-hidden">
+<img alt="User Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBDRjHFatzgI8RsbUs9ssHAkNVa8i3O8L5341ouQGc0c-JdZqe-KkdSnLjoRrr9btMkTTNt3bSWUUiRdDeSEAzsy1k3U_SZIYVw2scFicWqTDDTkT03XkuBRi4dAAyKNWC6NPjwTc2e6WePrM59ltcF9n9ttjbBajKjrOBMvE0KGBmWIrOaOduJlbFwduaeK88kQql5Zc7_FBZEIugMdnqigBdSqXf1jTrcVsaIFIBWmBABYO46Q3prF6bE1_Mqhmzt4YuqQydWAk"/>
+</div>
+</div>
+</nav>
+<main class="max-w-7xl mx-auto px-6 py-12">
+<header class="mb-12">
+<div class="flex items-center gap-3 text-primary font-bold text-sm tracking-widest uppercase mb-2">
+<span class="material-icons-round text-lg">explore</span>
+                Learning Path
+            </div>
+<h1 class="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">Level 1: AI Foundations</h1>
+<p class="text-slate-500 dark:text-slate-400 max-w-2xl text-lg leading-relaxed">
+                Master the core concepts of artificial intelligence. Complete modules to unlock advanced governance and ethics training.
+            </p>
+</header>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="group relative glass-card rounded-2xl p-8 border-2 border-accent-success/30 glow-green transition-all duration-300 hover:-translate-y-1 cursor-pointer overflow-hidden">
+<div class="absolute top-0 right-0 p-4">
+<span class="bg-accent-success/20 text-accent-success text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-icons-round text-[14px]">check_circle</span> COMPLETED
+                    </span>
+</div>
+<div class="w-16 h-16 bg-accent-success/10 rounded-2xl flex items-center justify-center text-accent-success mb-6 group-hover:scale-110 transition-transform">
+<span class="material-icons-round text-4xl">smart_toy</span>
+</div>
+<h3 class="text-2xl font-bold mb-2">Prompt Engineering</h3>
+<p class="text-slate-500 dark:text-slate-400 mb-6 text-sm">Learn the art of crafting high-performance prompts for LLMs.</p>
+<div class="space-y-4">
+<div class="flex justify-between items-end mb-1">
+<span class="text-xs font-mono font-bold text-accent-success">PROGRESS</span>
+<span class="text-xs font-mono font-bold">100%</span>
+</div>
+<div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+<div class="bg-accent-success h-full w-full"></div>
+</div>
+<div class="flex justify-between items-center pt-2">
+<div class="flex items-center gap-1 text-slate-400">
+<span class="material-icons-round text-sm">schedule</span>
+<span class="text-xs">45m</span>
+</div>
+<span class="font-mono text-sm font-bold text-accent-success">+500 XP</span>
+</div>
+</div>
+</div>
+<div class="group relative glass-card rounded-2xl p-8 border-2 border-accent-info/30 transition-all duration-300 hover:-translate-y-1 cursor-pointer overflow-hidden ring-1 ring-accent-info/50 ring-offset-4 dark:ring-offset-background-dark pulse-blue">
+<div class="absolute top-0 right-0 p-4">
+<span class="bg-accent-info/20 text-accent-info text-xs font-bold px-3 py-1 rounded-full">IN PROGRESS</span>
+</div>
+<div class="w-16 h-16 bg-accent-info/10 rounded-2xl flex items-center justify-center text-accent-info mb-6 group-hover:scale-110 transition-transform">
+<span class="material-icons-round text-4xl">shield</span>
+</div>
+<h3 class="text-2xl font-bold mb-2">Data Privacy</h3>
+<p class="text-slate-500 dark:text-slate-400 mb-6 text-sm">Securing enterprise data while leveraging cloud AI services.</p>
+<div class="space-y-4">
+<div class="flex justify-between items-end mb-1">
+<span class="text-xs font-mono font-bold text-accent-info">PROGRESS</span>
+<span class="text-xs font-mono font-bold">60%</span>
+</div>
+<div class="w-full bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+<div class="bg-accent-info h-full w-[60%]"></div>
+</div>
+<div class="flex justify-between items-center pt-2">
+<div class="flex items-center gap-1 text-slate-400">
+<span class="material-icons-round text-sm">schedule</span>
+<span class="text-xs">1h 20m</span>
+</div>
+<span class="font-mono text-sm font-bold text-accent-info">+750 XP</span>
+</div>
+</div>
+</div>
+<div class="group relative glass-card rounded-2xl p-8 border border-slate-200 dark:border-slate-800 transition-all duration-300 overflow-hidden">
+<div class="absolute inset-0 locked-overlay flex items-center justify-center z-10">
+<div class="bg-slate-800 text-white p-3 rounded-full shadow-xl">
+<span class="material-icons-round">lock</span>
+</div>
+</div>
+<div class="w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center text-slate-400 mb-6">
+<span class="material-icons-round text-4xl">balance</span>
+</div>
+<h3 class="text-2xl font-bold mb-2 text-slate-400">Bias &amp; Ethics</h3>
+<p class="text-slate-400 mb-6 text-sm">Understanding algorithmic fairness and societal impacts.</p>
+<div class="space-y-4">
+<div class="flex justify-between items-end mb-1">
+<span class="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">LOCKED</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+<div class="bg-slate-300 dark:bg-slate-700 h-full w-0"></div>
+</div>
+<div class="flex justify-between items-center pt-2">
+<span class="text-xs font-medium text-slate-400 italic">Unlocks at Level 5</span>
+<span class="font-mono text-sm font-bold text-slate-400">+1,200 XP</span>
+</div>
+</div>
+</div>
+<div class="group relative glass-card rounded-2xl p-8 border border-slate-200 dark:border-slate-800 transition-all duration-300 overflow-hidden">
+<div class="absolute inset-0 locked-overlay flex items-center justify-center z-10">
+<div class="bg-slate-800 text-white p-3 rounded-full shadow-xl">
+<span class="material-icons-round">lock</span>
+</div>
+</div>
+<div class="w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center text-slate-400 mb-6">
+<span class="material-icons-round text-4xl">copyright</span>
+</div>
+<h3 class="text-2xl font-bold mb-2 text-slate-400">IP &amp; Content</h3>
+<p class="text-slate-400 mb-6 text-sm">Navigating intellectual property rights in generative AI.</p>
+<div class="space-y-4">
+<div class="flex justify-between items-end mb-1">
+<span class="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">LOCKED</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+<div class="bg-slate-300 dark:bg-slate-700 h-full w-0"></div>
+</div>
+<div class="flex justify-between items-center pt-2">
+<span class="text-xs font-medium text-slate-400 italic">Complete Data Privacy to unlock</span>
+<span class="font-mono text-sm font-bold text-slate-400">+600 XP</span>
+</div>
+</div>
+</div>
+<div class="group relative glass-card rounded-2xl p-8 border border-slate-200 dark:border-slate-800 transition-all duration-300 overflow-hidden">
+<div class="absolute inset-0 locked-overlay flex items-center justify-center z-10">
+<div class="bg-slate-800 text-white p-3 rounded-full shadow-xl">
+<span class="material-icons-round">lock</span>
+</div>
+</div>
+<div class="w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-2xl flex items-center justify-center text-slate-400 mb-6">
+<span class="material-icons-round text-4xl">account_tree</span>
+</div>
+<h3 class="text-2xl font-bold mb-2 text-slate-400">Governance</h3>
+<p class="text-slate-400 mb-6 text-sm">Establishing frameworks for responsible AI deployment.</p>
+<div class="space-y-4">
+<div class="flex justify-between items-end mb-1">
+<span class="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">LOCKED</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+<div class="bg-slate-300 dark:bg-slate-700 h-full w-0"></div>
+</div>
+<div class="flex justify-between items-center pt-2">
+<span class="text-xs font-medium text-slate-400 italic">Level 10 required</span>
+<span class="font-mono text-sm font-bold text-slate-400">+1,500 XP</span>
+</div>
+</div>
+</div>
+<div class="border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-2xl p-8 flex flex-col items-center justify-center text-slate-400 group hover:border-primary/50 transition-colors">
+<span class="material-icons-round text-5xl mb-4 group-hover:text-primary transition-colors">add_circle_outline</span>
+<p class="font-bold text-center">New Content Coming Soon</p>
+<p class="text-xs mt-1">Variant 3 of 12</p>
+</div>
+</div>
+<footer class="mt-20 pt-10 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="text-sm text-slate-500">
+                © 2025 AI Literacy Platform. All training modules are bonafide enterprise-grade content.
+            </div>
+<div class="flex gap-4">
+<a class="text-sm font-semibold hover:text-primary" href="#">Help Center</a>
+<a class="text-sm font-semibold hover:text-primary" href="#">API Docs</a>
+<a class="text-sm font-semibold hover:text-primary" href="#">Contact Support</a>
+</div>
+</footer>
+</main>
+
+</body></html>
